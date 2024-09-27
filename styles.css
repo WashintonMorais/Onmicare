@@ -1,0 +1,508 @@
+/* Define estilos globais para o documento */
+* {
+  margin: 0; /* Remove as margens padrão */
+  padding: 0; /* Remove os paddings padrão */
+  box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+  font-family: "Poppins", sans-serif; /* Define a fonte padrão como "Poppins" */
+}
+
+
+/* Define variáveis de cor e estilo */
+:root {
+  --cor-principal: #ad7600; /* Azul vibrante para representar o céu e a água */
+  --cor-secundaria: #f0ad4e; /* Laranja para representar a energia e o movimento */
+  --cor-texto-principal: #484848; /* Cinza escuro para boa legibilidade */
+  --cor-fundo-claro-principal: #fffff;
+  --cor-fundo-claro-secundaria: #ffffff;
+  --cor-fundo-escuro: #222;
+  --cor-acento: #e5e5e5;
+}
+/* Estiliza o corpo da página */
+body {
+  grid-template-columns: 1fr;
+  flex-direction: column; /* Alinha os itens na vertical */
+  justify-content: center; /* Centraliza os itens verticalmente */
+  padding: 0; /* Remove o padding padrão */
+  display: flex; /* Usa Flexbox para layout */
+
+}
+  
+/* Define o estilo do container principal */     
+header {
+  display: flex;
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  align-items: center;
+  background-color: #ad7600;
+  width: 100%; /* Ocupa toda a largura da tela */
+  margin: 0; /* Remove as margens */
+}
+
+.contato {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between; /* Distribui os itens igualmente no espaço disponível */
+  align-items: center; /* Centralizaos itens verticalmente */
+  padding: 10px;     
+  background-color: #ad7600; /* Cor de fundo para a linha */
+  color: #ffffff;
+  gap: 0; /* Ajuste o valor de 'gap' conforme necessário */
+  width: 80%; /* Ajuste a largura conforme necessário */
+  max-width: 70%; /* Ajuste o valor conforme necessário */
+  margin: 0 auto; /* Centraliza o container */
+  font-size: 14px; /* Ajuste o tamanho da fonte */
+  line-height: 1.5; /* Ajuste a altura da linha */
+
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+}
+
+.contato-item i {
+  margin-right: 0.5rem;
+}
+
+.contato-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Adiciona para centralizar verticalmente */
+  width: 100%; /* Ajuste a largura conforme necessário */
+  background-color: #ffffff; /* Adiciona um fundo cinza claro */
+}
+
+.logo img {
+  justify-content: space-between;
+  width: 400px; /* Ajuste o tamanho da sua logo */
+  margin: 5px;
+}
+
+.search-container {
+  display: flex; /* Utiliza Flexbox para organizar os elementos em linha */
+  align-items: center; /* Centraliza os itens verticalmente */
+  width: 50%; /* Ocupa toda a largura disponível */
+  height: 100%; /* Ocupa metade da altura */
+  justify-content: space-between; /* Distribui os elementos horizontalmente */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona um fundo cinza claro */
+  border-radius: 10px; /* Arredonda as bordas */
+  height: 80%; /* Altura fixa */
+ 
+}
+
+.search-container input {
+  flex: 1; /* Ocupa todo o espaço restante */
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #ad7600;
+  border-radius: 1.5rem; /* Borda arredondada */
+  color: #484848; /* Cor do texto */
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: #484848;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.search-results {
+  /* Estilos para o container dos resultados */
+  background-color: #ad7600; /* Cor de fundo branca */
+  padding: 20px;
+  border: 1px solid #ad7600;
+  margin-top: 20px;
+}
+
+
+.informacao 
+{
+  width: 80%;
+  margin: auto; /* Centraliza o container horizontalmente */
+  gap: 20px; /* Espaço entre os itens da grade */ 
+  border: 1px solid #484848;
+  border-radius: 10px;
+  background-color: #ad7600;
+  padding: 20px;
+  grid-gap: 20px;
+  text-align: center;
+  margin-bottom: 1rem; /* Espaçamento abaixo de cada seção */ 
+
+}  
+  /* Define o estilo da sessão informacao */
+.informacao .row 
+{
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  box-sizing: border-box;    
+  grid-gap: 20px;
+  color: #484848;
+  box-sizing: border-box;
+  margin: auto; /* Centraliza o container horizontalmente */
+  border-radius: 10px;
+
+} 
+
+.informacao .grid-item 
+{ 
+  text-align: justifi;
+  background-color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #484848;
+  border-radius: 10px;
+  }
+
+  .informacao .grid-item h3 
+  {
+   font-size: 1.6rem; /* Define o tamanho da fonte do corpo do texto */  
+   color: #333;
+   margin-bottom: 15px;
+   text-align: center;
+   box-sizing: border-box;
+ }
+
+  .informacao.grid-item p {
+   flex: 1; /* Ocupa todo o espaço restante */
+   font-size: 1.6rem; /* Define o tamanho da fonte do corpo do texto */
+   text-align: center;
+   padding: 0;
+   box-sizing: border-box;
+   min-width: 200px; /* Ajuste o valor conforme necessário */
+   max-width: 200px;
+   min-height: 100px;
+   max-height: 100px;
+   font-size: 16px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+  } 
+
+  .barranavegacao {
+      background-color: #f0f0f0; /* Substitua "#f0f0f0" pela cor desejada */
+      margin: auto; /* Centraliza o container horizontalmente */
+      align-items: center;
+      width: 100%; /* Ajuste a largura conforme necessário */ 
+      margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+      padding: 10px;
+    }
+
+/* Estiliza os botões dentro das seções */
+.barranavegacao button {
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  background-color: #4CAF50;  /* Cor de fundo do botão */
+  color: white;  /* Cor do texto do botão */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase; /* Coloca o texto em caixa alta */
+  font-size: 12px; /* Define o tamanho da fonte do corpo do texto */ 
+  font-weight: 100; 
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin:10px;
+  border-radius: 10px;
+
+}
+
+/* Adiciona efeito hover ao botão de pesquisa */
+section button:hover {
+  background-color: var(--cor-secundaria); /* Muda a cor de fundo ao passar o mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa */
+  color: var(--cor-texto-principal); /* Cor do texto do botão */
+} 
+
+
+#homevitrine {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 20px; /* Espaço entre os itens do grid */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona uma cor de fundo */
+  padding: 20px;
+  width: 80%; /* Ajuste a largura conforme necessário */
+  margin: auto; /* Centraliza o container horizontalmente */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+
+    }
+
+  /* Estilos para os cards */
+.card {
+gap: 20px; /* Espaço entre os itens da grade */ 
+border: 1px solid #ad7600;
+border-radius: 1.5rem;
+text-align: center;
+box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+background-color: #ffffff; /* Adiciona um fundo cinza claro */
+border-radius: 10px; /* Arredonda as bordas */ 
+width: 250px; /* Largura fixa do card */
+height: 300px; /* Altura fixa do card */
+border: 2px solid #ad7600;
+flex-direction: column; /* Alinha os elementos verticalmente */
+   
+}
+
+.card img {
+  width: 150px; /* Ocupa toda a largura do card */
+  height: 150px; /* Altura fixa da imagem */
+  object-fit: cover; /* Faz com que a imagem preencha todo o espaço disponível */
+  align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.card h2 {
+  width: 240px; /* Largura do container do título */
+  line-height: 1.2; /* Define a altura de duas linhas */
+  color: #484848;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 20px; /* Ajuste a altura conforme necessário */
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitulo  {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  color: #484848;
+  height: 20px; /* Ajuste a altura conforme necessário */
+
+}
+
+.servico {
+  /* Estilos para o nome do serviço */
+  color: #484848;
+  font-size: 12px;
+  
+}
+
+.card p {
+  color: #666;
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.card button {
+  background-color: #4CAF50;
+  color: #f0f0f0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais intensa */
+
+}
+
+.card-detalhes 
+{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 10px; /* Arredonda as bordas */ 
+  border: 5px solid #484848;
+
+}
+
+.card-detalhes img {
+  width: 200px; /* Ocupa toda a largura do card */
+  height: 200px; /* Altura fixa da imagem */
+  object-fit: cover; /* Faz com que a imagem preencha todo o espaço disponível */
+  align-items: center; /* Centraliza os itens horizontalmente */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: min-content 1fr; /* A primeira coluna com tamanho mínimo, a segunda ocupa o restante */
+}
+
+.grid-item {
+  padding: 10px;
+}
+
+.card-detalhes-conteudo {
+  line-height: 2; /* Define a altura de duas linhas */
+  background-color: #ffffff; /* Adiciona um fundo */
+  padding: 10px;
+  max-width: 800px; /* Ajuste o tamanho máximo conforme necessário */
+  padding: 1rem; /* Espaçamento interno */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+  display: flex; /* Usa Flexbox para layout */
+  flex-direction: column; /* Alinha os itens na vertical */
+  align-items: flex-start; /* Alinha os elementos à esquerda */
+  margin: 1px;
+}
+
+.grid-item:last-child {
+  text-align: justify;
+}
+
+.fechar-detalhes {
+  /* Estilize o botão de fechar */
+  position: fixed;
+  top: 10px;
+  z-index: 999; /* Garante que o botão fique acima dos outros elementos */
+  right: 10px;
+  background-color: #f00;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; /* Arredonda as bordas */
+}
+
+/* Estiliza os títulos dentro dos itens de resultado */
+.card-detalhes h2 {
+  margin-bottom: 15px; /* Espaçamento abaixo dos itens */
+  font-size: 1.5rem; /* Tamanho da fonte */
+  color: #ad7600; /* Cor do texto */
+  margin: 0;
+}
+
+.card-detalhes-conteudo h3{
+  font-size: 15px; /* Tamanho da fonte */
+  padding-left: 20px;
+  margin: 0;
+  color: #484848 /* Cor do texto */
+}
+
+.card-detalhes p {
+  line-height: 2; /* Define a altura de duas linhas */
+  font-size: 15px; /* Tamanho da fonte */
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+}
+.whatsapp-button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 20px; /* Adiciona 20px de margem em todos os lados do botão */
+  cursor: pointer;
+  border-radius: 10px; /* Arredonda as bordas */
+  align-items: center; /* Alinha o ícone e o texto verticalmente */
+  top: 10px;
+  z-index: 999; /* Garante que o botão fique acima dos outros elementos */
+  right: 10px;
+}
+
+
+.fa-whatsapp {
+  margin-right: 5px; /* Adiciona um espaço à direita do ícone */
+}
+
+/* Define o estilo do rodapé */
+.footer .rodape {
+  min-width: 0;
+  max-width: 100%;
+  }
+        
+/* Container principal do rodapé */
+footer {
+  background-color: #484848;
+  color: #ffff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-cards {
+  width: 80%;
+  max-width: 1200px;
+}
+
+/* Container do rodapé com layout em 4 colunas */
+.rodape-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Cada coluna do rodapé */
+.rodape-coluna {
+  flex: 1;
+  min-width: 200px; /* Ajuste para responsividade */
+  margin: 10px;
+}
+
+/* Título de cada coluna */
+.rodape-coluna h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f4b41a;
+  padding-bottom: 5px;
+}
+
+/* Lista de navegação */
+footer.nav-list {
+  list-style-type: none;
+}
+
+/* Links da lista */
+footer.nav-list li {
+  margin-bottom: 8px;
+}
+footer
+.nav-list a {
+  color: #f4b41a;
+  text-decoration: none;
+}
+
+footer.nav-list a:hover {
+  text-decoration: underline;
+}
+
+/* Estilização dos cards que aparecem ao clicar nos links */
+footer.card {
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer.card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+footer.card p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Adiciona responsividade ao rodapé */
+@media (max-width: 768px) {
+  .rodape-container {
+      flex-direction: column;
+  }
+  .rodape-coluna {
+      min-width: 100%;
+      text-align: center;
+  }
+}
