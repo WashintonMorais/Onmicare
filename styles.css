@@ -24,17 +24,18 @@ body {
   justify-content: center; /* Centraliza os itens verticalmente */
   padding: 0; /* Remove o padding padrão */
   display: flex; /* Usa Flexbox para layout */
-
 }
-  
-/* Define o estilo do container principal */     
+
+
+/* styles-responsive.css */
+@media (max-width: 768px) {
+  /* Estilos para telas menores */
+}
+
+/* Define a cor de fundo para todo o header */
 header {
-  display: flex;
-  flex-direction: column; /* Alinha os elementos verticalmente */
-  align-items: center;
   background-color: #ad7600;
-  width: 100%; /* Ocupa toda a largura da tela */
-  margin: 0; /* Remove as margens */
+  border: none; 
 }
 
 .contato {
@@ -51,12 +52,12 @@ header {
   margin: 0 auto; /* Centraliza o container */
   font-size: 14px; /* Ajuste o tamanho da fonte */
   line-height: 1.5; /* Ajuste a altura da linha */
-
 }
 
 .contato-item {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 
 .contato-item i {
@@ -70,29 +71,40 @@ header {
 
 .header-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center; /* Adiciona para centralizar verticalmente */
-  width: 100%; /* Ajuste a largura conforme necessário */
   background-color: #ffffff; /* Adiciona um fundo cinza claro */
+  border: none;
+  padding-left: 100px; /* Ajuste o valor conforme necessário */
+  padding-right: 100px;
 }
 
 .logo img {
   justify-content: space-between;
-  width: 400px; /* Ajuste o tamanho da sua logo */
-  margin: 5px;
+  width: 80%; /* Ajuste o tamanho da sua logo */
 }
 
 .search-container {
   display: flex; /* Utiliza Flexbox para organizar os elementos em linha */
   align-items: center; /* Centraliza os itens verticalmente */
-  width: 50%; /* Ocupa toda a largura disponível */
+  width: 100%; /* Ocupa toda a largura disponível */
   height: 100%; /* Ocupa metade da altura */
   justify-content: space-between; /* Distribui os elementos horizontalmente */
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
   background-color: #ffffff; /* Adiciona um fundo cinza claro */
   border-radius: 10px; /* Arredonda as bordas */
   height: 80%; /* Altura fixa */
  
+}
+/* Estilo para telas menores (exemplo: abaixo de 768px) */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .search-container {
+    margin-top: 10px;
+  }
 }
 
 .search-container input {
@@ -188,7 +200,7 @@ header {
    text-overflow: ellipsis;
   } 
 
-  .barranavegacao {
+.barranavegacao {
       background-color: #f0f0f0; /* Substitua "#f0f0f0" pela cor desejada */
       margin: auto; /* Centraliza o container horizontalmente */
       align-items: center;
@@ -226,13 +238,13 @@ section button:hover {
 
 #homevitrine {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
-  gap: 20px; /* Espaço entre os itens do grid */
+  gap: 5px; /* Espaço entre os itens do grid */
   box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
   background-color: #ffffff; /* Adiciona uma cor de fundo */
-  padding: 20px;
-  width: 80%; /* Ajuste a largura conforme necessário */
+  padding: 10px;
+  width: 90%; /* Ajuste a largura conforme necessário */
   margin: auto; /* Centraliza o container horizontalmente */
   margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
 
@@ -247,11 +259,16 @@ text-align: center;
 box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
 background-color: #ffffff; /* Adiciona um fundo cinza claro */
 border-radius: 10px; /* Arredonda as bordas */ 
-width: 250px; /* Largura fixa do card */
+width: 230px; /* Largura fixa do card */
 height: 300px; /* Altura fixa do card */
 border: 2px solid #ad7600;
 flex-direction: column; /* Alinha os elementos verticalmente */
-   
+}
+/* Para telas menores que 768px, exibir 2 colunas */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 }
 
 .card img {
@@ -320,9 +337,7 @@ flex-direction: column; /* Alinha os elementos verticalmente */
   background-color: #ffffff;
   border-radius: 10px; /* Arredonda as bordas */ 
   border: 5px solid #484848;
-
 }
-
 .card-detalhes img {
   width: 200px; /* Ocupa toda a largura do card */
   height: 200px; /* Altura fixa da imagem */
