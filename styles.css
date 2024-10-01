@@ -24,6 +24,8 @@ body {
   justify-content: center; /* Centraliza os itens verticalmente */
   padding: 0; /* Remove o padding padrão */
   display: flex; /* Usa Flexbox para layout */
+  font-family: Arial, sans-serif; /* Substitua por sua fonte preferida */
+  font-size: 16px; /* Tamanho de fonte base */
 }
 
 
@@ -240,34 +242,37 @@ section button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
-  gap: 5px; /* Espaço entre os itens do grid */
+  gap: 20px; /* Espaço entre os itens do grid */
   box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
   background-color: #ffffff; /* Adiciona uma cor de fundo */
   padding: 10px;
-  width: 90%; /* Ajuste a largura conforme necessário */
+  width: 80%; /* Ajuste a largura conforme necessário */
+  height: auto;  
   margin: auto; /* Centraliza o container horizontalmente */
   margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
-
-    }
+  justify-content: center;
+ }
 
   /* Estilos para os cards */
 .card {
-gap: 20px; /* Espaço entre os itens da grade */ 
-border: 1px solid #ad7600;
-border-radius: 1.5rem;
-text-align: center;
-box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-background-color: #ffffff; /* Adiciona um fundo cinza claro */
-border-radius: 10px; /* Arredonda as bordas */ 
-width: 230px; /* Largura fixa do card */
-height: 300px; /* Altura fixa do card */
-border: 2px solid #ad7600;
-flex-direction: column; /* Alinha os elementos verticalmente */
+  display: flex;
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espaço entre os itens da grade */ 
+  border: 2px solid #ad7600;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona um fundo cinza claro */
+  width: auto; /* Largura fixa do card */
+  height: auto; /* Altura fixa do card */
 }
-/* Para telas menores que 768px, exibir 2 colunas */
 @media (max-width: 768px) {
-  .card-container {
+  #homevitrine {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 100%; /* Ajuste a largura conforme necessário */
+
   }
 }
 
@@ -279,17 +284,15 @@ flex-direction: column; /* Alinha os elementos verticalmente */
 }
 
 .card h2 {
-  width: 240px; /* Largura do container do título */
-  line-height: 1.2; /* Define a altura de duas linhas */
+  width: 100%; /* Ocupa toda a largura do card */
   color: #484848;
-  font-size: 1rem;
+  font-size: 14px; /* Tamanho da fonte do título */
   display: flex;
   flex-direction: column;
-  height: 20px; /* Ajuste a altura conforme necessário */
+  height: 10px; /* Ajuste a altura conforme necessário */
   justify-content: space-around;
   align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .subtitulo  {
@@ -298,8 +301,6 @@ flex-direction: column; /* Alinha os elementos verticalmente */
   font-weight: bold;
   unicode-bidi: isolate;
   color: #484848;
-  height: 20px; /* Ajuste a altura conforme necessário */
-
 }
 
 .servico {
@@ -311,7 +312,7 @@ flex-direction: column; /* Alinha os elementos verticalmente */
 
 .card p {
   color: #666;
-  font-size: 1rem;
+  font-size: 1rem; /* Tamanho da fonte do texto */
   margin: 10px 0;
 }
 
