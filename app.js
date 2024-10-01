@@ -171,11 +171,26 @@ class Tratamento {
     card.appendChild(botaoDetalhes);
     return card;
   }
+ 
+  function fecharCardDetalhes() {
+    if (cardDetalhesAtivo) {
+        cardDetalhesAtivo.remove();
+        cardDetalhesAtivo = null;
+    }
+} 
+
+  let cardDetalhesAtivo = null; // Variável global para armazenar o card ativo
   
-  // Função para mostrar o card de detalhes
-  function mostrarCardDetalhes(produto) {
-    const cardDetalhes = document.createElement('div');
-    cardDetalhes.classList.add('card-detalhes');
+// Função para mostrar o card de detalhes
+function mostrarCardDetalhes(produto) {
+  // Remover o card ativo anterior, se existir
+  if (cardDetalhesAtivo) {
+      cardDetalhesAtivo.remove();
+  }
+
+  // Criar o novo card de detalhes
+  const cardDetalhes = document.createElement('div');
+  cardDetalhes.classList.add('card-detalhes', 'ativo'); // Adicionar a classe 'ativo'
   
     cardDetalhes.innerHTML = `
     <div class="card-detalhes-conteudo">
@@ -232,8 +247,13 @@ class Tratamento {
     cardDetalhes.appendChild(botaoFechar);
 
     document.body.appendChild(cardDetalhes);
+    cardDetalhesAtivo = cardDetalhes;
+  
         // **Logar no console para verificar se o botão está sendo criado**
         console.log('Botão de WhatsApp criado:', botaoWhatsApp);
+
+    // Adicionar um z-index para garantir que o card ativo fique acima dos outros
+    cardDetalhes.style.zIndex = 100;        
 }
   
   // Função para exibir produtos na vitrine
@@ -317,4 +337,28 @@ class Tratamento {
     exibirProdutosNaVitrine(produtosFiltrados, document.getElementById('homevitrine'));
   });
   
-  
+
+
+ const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentIndex = 0;
+
+function showSlide(index) {
+  const slider = document.querySelector('.slider');
+  const width = slides[0].offsetWidth;
+  slider.scrollLeft = index * width; // Controla o deslocamento horizontal baseado no índice
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+}
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    showSlide(index);
+    currentIndex = index;
+  });
+});
+
+// Ajusta o slide visível ao redimensionar a tela
+window.addEventListener('resize', () => {
+  showSlide(currentIndex);
+});
