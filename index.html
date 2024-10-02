@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" sizes="16x16" href="img\favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="https://kit.fontawesome.com/7517304509.js" crossorigin="anonymous"></script>
-    <title>Onmicare Depilação a Laser</title>
-    <title>Tipos de Depilação</title>
+    <script src="https://kit.fontawesome.com/7517304509.js" crossorigin="anonymous"></script>    <title>Onmicare Depilação a Laser</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">     
 </head>
 <body>
 <header>
@@ -33,28 +34,36 @@
                 </a>
             </div>
         </div>
-    </section>
-        
+    </section> 
+</header> 
 <section>
         <div class="header-content">
         <div class="logo">
             <img src="img\Logoonmicare.png" alt="Logo da OnMicare">
-    </div>
+        </div>
+        <div class="title">
+            <h1>ONMICARE</h1>
+            <h2>VOCÊ AOS MEUS CUIDADOS</h2>
+        </div>
     <div class="search-container">
             <input type="text" id="busca" placeholder="Pesquisar produtos">
             <button type="button">BUSCAR</button>
     </div>
     </div>
 </section>              
-</header>
-    <section>
-        <div class="barranavegacao">
+<section>
+    <div class="barranavegacao">
+        <button id="botao-filtrar" class="filtrar">
+            <i class="fa-solid fa-filter"></i> Filtrar Tratamento
+        </button>
+        <div id="opcoes-tratamento" class="opcoes-tratamento">
             <button id="botao-todos">Todos os Tratamentos</button>
             <button id="botao-depilacaoFeminina">Depilação Feminina</button>
             <button id="botao-depilacaoMasculina">Depilação Masculina</button>
-            <button id="botao-remocaoALaser">Remoção A Laser</button>           
-          </div>
-    </section>
+            <button id="botao-remocaoALaser">Remoção A Laser</button>  
+        </div>         
+    </div>
+</section>
     <section>      
         <div class="homevitrine" id="homevitrine">
         </div>

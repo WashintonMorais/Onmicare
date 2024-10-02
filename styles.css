@@ -92,46 +92,75 @@ header {
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribui os itens logo, títulos e campo de busca */
   align-items: center; /* Adiciona para centralizar verticalmente */
   background-color: #ffffff; /* Adiciona um fundo cinza claro */
   border: none;
-  padding-left: 100px; /* Ajuste o valor conforme necessário */
-  padding-right: 100px;
+  padding: 5px 150px;
+}
+.title {
+  text-align: center; /* Centraliza os textos h1 e h2 */
+  margin-right: 20px;
+}
+.title h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300; /* Poppins Light */
+  font-size: 2.5rem;
+  margin: 0;
+  color: #ad7600; /* Cor do texto */
+  text-align: center; /* Centraliza o H1 */
+}
+.title h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200; /* Poppins ExtraLight */
+  font-size: 12px;
+  margin: 0;
+  color: #484848; /* Cor do texto H2 */
+  text-align: center; /* Centraliza o H2 */
 }
 
 .logo img {
   justify-content: space-between;
-  width: 80%; /* Ajuste o tamanho da sua logo */
+  width: 80px; /* Ajuste o tamanho da logo conforme necessário */
+  height: auto;
+  margin-right: 10px; /* Espaço à direita da logo */
 }
 
 .search-container {
   display: flex; /* Utiliza Flexbox para organizar os elementos em linha */
   align-items: center; /* Centraliza os itens verticalmente */
-  width: 100%; /* Ocupa toda a largura disponível */
+  width: 80%; /* Ocupa toda a largura disponível */
   height: 100%; /* Ocupa metade da altura */
   justify-content: space-between; /* Distribui os elementos horizontalmente */
   background-color: #ffffff; /* Adiciona um fundo cinza claro */
   border-radius: 10px; /* Arredonda as bordas */
-  height: 80%; /* Altura fixa */
- 
 }
 /* Estilo para telas menores (exemplo: abaixo de 768px) */
 @media (max-width: 768px) {
   .header-content {
-    flex-direction: column;
     text-align: center;
+    padding: 5px 5px;
   }
 
   .search-container {
-    margin-top: 10px;
+    width: 100%; /* Garante que a busca ocupe 100% da largura */
+  }
+
+  /* Oculta os títulos h1 e h2 em telas menores */
+  .title {
+    display: none;
+  }
+
+  /* Ajuste do tamanho da logo para centralizar em telas menores */
+  .logo img {
+    width: 80px; /* Diminui o tamanho da logo para telas menores */
   }
 }
 
 .search-container input {
-  flex: 1; /* Ocupa todo o espaço restante */
+  flex-grow: 1; /* Faz o campo de busca ocupar o máximo de espaço disponível */
   padding: 10px;
-  margin: 20px;
+  margin-right: 10px; /* Espaço entre o campo de busca e o botão */
   border: 1px solid #ad7600;
   border-radius: 1.5rem; /* Borda arredondada */
   color: #484848; /* Cor do texto */
@@ -147,6 +176,10 @@ header {
   border-radius: 5px;
   cursor: pointer;
   border-radius: 10px;
+}
+.search-container button:hover {
+  background-color: #ad7600;
+  color: white;
 }
 
 .search-results {
@@ -234,14 +267,14 @@ header {
   }
 }
 
-
 .barranavegacao {
       background-color: #f0f0f0; /* Substitua "#f0f0f0" pela cor desejada */
       margin: auto; /* Centraliza o container horizontalmente */
       align-items: center;
       width: 100%; /* Ajuste a largura conforme necessário */ 
       margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
-      padding: 10px;
+      margin-right: 20px;
+      padding: 5px 20px;
     }
 
 /* Estiliza os botões dentro das seções */
@@ -252,15 +285,14 @@ header {
   padding: 10px 20px;
   border-radius: 5px;
   text-transform: uppercase; /* Coloca o texto em caixa alta */
-  font-size: 12px; /* Define o tamanho da fonte do corpo do texto */ 
-  font-weight: 100; 
+  font-size: 14px; /* Define o tamanho da fonte do corpo do texto */ 
+  font-weight: 400; 
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin:10px;
   border-radius: 10px;
-
 }
 
 /* Adiciona efeito hover ao botão de pesquisa */
@@ -270,6 +302,49 @@ section button:hover {
   color: var(--cor-texto-principal); /* Cor do texto do botão */
 } 
 
+.barranavegacao button.selected {
+  border: 2px solid red; /* Adiciona destaque para o botão selecionado */
+  background-color: #4CAF50; /* Mantém a cor de fundo do botão selecionado */
+  color: white;
+}
+
+.opcoes-tratamento button {
+  margin: 5px;
+}
+
+/* Para o botão "Filtrar Tratamento" quando um item é selecionado */
+.barranavegacao #botao-filtrar {
+  margin-bottom: 10px;
+}
+
+
+/* Estilos para telas menores (oculta os outros botões e exibe só o botão de filtrar) */
+@media (max-width: 768px) {
+  #opcoes-tratamento {
+      display: none; /* Oculta os outros botões inicialmente */
+      width: 100%;
+  }
+
+  .barranavegacao .filtrar {
+      display: block;
+      width: 100%; /* O botão Filtrar ocupa a largura total */
+      background-color: #4CAF50;
+  }
+
+  /* Exibe os botões quando clicar no botão "Filtrar Tratamento" */
+  .barranavegacao.active #opcoes-tratamento {
+      display: flex; /* Exibe os botões na vertical */
+  }
+}
+/* Oculta as opções de tratamento por padrão */
+.opcoes-tratamento {
+  display: none;
+}
+
+.filtrar i {
+  margin-right: 8px;
+  font-size: 16px;
+}
 
 #homevitrine {
   display: grid;

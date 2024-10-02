@@ -307,39 +307,100 @@ function mostrarCardDetalhes(produto) {
     const produtosFiltrados = filtrarProdutosPorServico(todosOsProdutos, 'Remoção A Laser');
     exibirProdutosNaVitrine(produtosFiltrados, document.getElementById('homevitrine'));
   });
-  
 };
 
-  function normalizarTexto(texto) {
+
+// função filtrar barra de navegação
+document.getElementById('botao-filtrar').addEventListener('click', function () {
+  const opcoesTratamento = document.getElementById('opcoes-tratamento');
+
+  // Verifica se as opções de tratamento estão ocultas ou visíveis
+  if (opcoesTratamento.style.display === 'none' || opcoesTratamento.style.display === '') {
+    // Mostra as opções de tratamento
+    opcoesTratamento.style.display = 'block';
+
+    // Mostra todos os botões de tratamento e remove o destaque
+    const botoesTratamento = document.querySelectorAll('#opcoes-tratamento button');
+    botoesTratamento.forEach(function (btn) {
+      btn.style.display = 'block'; // Mostra todos os botões novamente
+      btn.style.border = ''; // Remove o destaque do botão
+    });
+
+    // Remove o texto da opção selecionada (limpa o filtro)
+    const elementoSelecionado = document.getElementById('tratamento-selecionado');
+    if (elementoSelecionado) {
+      elementoSelecionado.innerText = '';
+    }
+  } else {
+    // Oculta as opções de tratamento se já estiverem visíveis
+    opcoesTratamento.style.display = 'none';
+  }
+});
+
+// Adiciona eventos de clique para cada botão dentro das opções
+const botoesTratamento = document.querySelectorAll('#opcoes-tratamento button');
+botoesTratamento.forEach(function (botao) {
+  botao.addEventListener('click', function () {
+    const tratamentoSelecionado = this.innerText;
+
+    // Exibe a opção selecionada ao lado do botão de filtro, sem substituí-lo
+    let elementoSelecionado = document.getElementById('tratamento-selecionado');
+    if (!elementoSelecionado) {
+      // Cria o elemento que vai exibir o tratamento selecionado, se ainda não existir
+      elementoSelecionado = document.createElement('span');
+      elementoSelecionado.id = 'tratamento-selecionado';
+      elementoSelecionado.style.marginLeft = '10px'; // Adiciona espaço entre o botão e o texto
+      document.querySelector('.barranavegacao').appendChild(elementoSelecionado);
+    }
+    elementoSelecionado.innerText = `Tratamento Selecionado: ${tratamentoSelecionado}`;
+
+    // Oculta todos os botões exceto o selecionado
+    botoesTratamento.forEach(function (btn) {
+      if (btn !== botao) {
+        btn.style.display = 'none'; // Oculta os outros botões
+      } else {
+        btn.style.border = '2px solid red'; // Destaca o botão selecionado
+      }
+    });
+
+    // Oculta as opções de tratamento após a seleção de uma opção
+    document.getElementById('opcoes-tratamento').style.display = 'none';
+  });
+});
+
+
+
+
+function normalizarTexto(texto) {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
   
-  const buscaInput = document.getElementById('busca');
+const buscaInput = document.getElementById('busca');
   
-  function buscarProdutos(produtos, termoBusca) {
-    const termoMin = termoBusca.toLowerCase();
-    const termoNormalizado = normalizarTexto(termoBusca);
-    return produtos.filter(produto => {
-      return (
-        produto.tratamento.nome.toLowerCase().includes(termoMin) ||
-        produto.servico.nome.toLowerCase().includes(termoMin) ||
-        produto.titulo.toLowerCase().includes(termoMin)  ||
-        normalizarTexto(produto.tratamento.nome).includes(termoNormalizado) ||
-        normalizarTexto(produto.servico.nome).includes(termoNormalizado) ||
-        normalizarTexto(produto.titulo).includes(termoNormalizado)
+function buscarProdutos(produtos, termoBusca) {
+  const termoMin = termoBusca.toLowerCase();
+  const termoNormalizado = normalizarTexto(termoBusca);
+  return produtos.filter(produto => {
+    return (
+      produto.tratamento.nome.toLowerCase().includes(termoMin) ||
+      produto.servico.nome.toLowerCase().includes(termoMin) ||
+      produto.titulo.toLowerCase().includes(termoMin)  ||
+      normalizarTexto(produto.tratamento.nome).includes(termoNormalizado) ||
+      normalizarTexto(produto.servico.nome).includes(termoNormalizado) ||
+      normalizarTexto(produto.titulo).includes(termoNormalizado)
       );
     });
-  }
+}
   
-  buscaInput.addEventListener('input', () => {
-    const termoBusca = buscaInput.value;
-    const produtosFiltrados = buscarProdutos(produtos, termoBusca);
-    exibirProdutosNaVitrine(produtosFiltrados, document.getElementById('homevitrine'));
-  });
+buscaInput.addEventListener('input', () => {
+  const termoBusca = buscaInput.value;
+  const produtosFiltrados = buscarProdutos(produtos, termoBusca);
+  exibirProdutosNaVitrine(produtosFiltrados, document.getElementById('homevitrine'));
+});
   
 
 
- const slides = document.querySelectorAll('.slide');
+const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 let currentIndex = 0;
 
