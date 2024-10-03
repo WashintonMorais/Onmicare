@@ -63,9 +63,10 @@ O site é composto por várias seções que apresentam as informações de manei
 
 Para mais informações sobre o projeto ou para contribuir, entre em contato através de:
 
-- **Email**: [onmicarelaser@gmail.com.br](mailto:onmicarelaser@gmail.com.br)
-- **WhatsApp**: [(55) 35 98874 0679](https://wa.me/5535988740679)
-- **Endereço**: Av. Julião Arbex, 28 - Apto 5 - Centro, Três Corações - MG, 37410-109
+- **Nome**: Washinton de Morais
+- **Email**: [washitondemorais@gmail.com.br](mailto:washitondemorais@gmail.com.br)
+- **LinkedIn**: [https://www.linkedin.com/in/washintonmorais/](https://www.linkedin.com/in/washintonmorais/)
+- **WhatsApp**: [(55) 35 98804 9033](https://wa.me/5535988049033)
 
 ## Melhorias Futuras
 
