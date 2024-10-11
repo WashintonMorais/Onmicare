@@ -346,7 +346,7 @@ section button:hover {
   font-size: 16px;
 }
 
-#homevitrine {
+.vitrine {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
@@ -359,7 +359,69 @@ section button:hover {
   margin: auto; /* Centraliza o container horizontalmente */
   margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
   justify-content: center;
- }
+}
+
+/* Você pode também manter a estilização específica se desejar */
+#homevitrine {
+  /* Remova ou mantenha estilos específicos aqui se necessário */
+}
+
+#conteudo {
+  display: grid; /* Define o grid layout */
+  grid-template-columns: 1fr 3fr; /* 1 parte para a coluna de filtros, 3 partes para o conteúdo */
+  gap: 20px; /* Espaçamento entre as colunas */
+  padding: 10px; /* Espaçamento interno */
+}
+.homeconteudo {
+  display: flex;
+  gap: 20px; /* Espaço entre as colunas */
+}
+  
+  .coluna-esquerda {
+  flex: 1; /* Controla a largura da coluna da esquerda */
+  padding: 20px; /* Adiciona algum espaço interno */
+  background-color: #f0f0f0; /* Cor de fundo para visualização */
+  border: 1px solid #ccc; /* Borda para melhor visualização */
+  }
+  
+  .coluna-direita {
+  flex: 2; /* Controla a largura da coluna da direita */
+  padding: 20px; /* Adiciona algum espaço interno */
+  border: 1px solid #ccc; /* Borda para melhor visualização */
+  }
+  
+  .links-container {
+   margin-top: 20px; /* Espaço acima do container de links */
+  }
+  
+  .filtro-lista {
+  list-style-type: none; /* Remove os marcadores padrão da lista */
+  padding: 0; /* Remove o padding padrão */
+  }
+  
+  .filtro-lista li {
+  margin-bottom: 10px; /* Espaço entre os itens da lista */
+  }
+  
+  .vitrine-item {
+  margin-bottom: 20px; /* Espaço entre os itens da vitrine */
+  }
+  
+.filtro-container {
+  /* Estilos específicos para a coluna de filtros */
+  background-color: #f9f9f9; /* Cor de fundo para destacar a coluna de filtros */
+  padding: 10px; /* Espaçamento interno */
+  border: 1px solid #ddd; /* Borda para delimitar a coluna */
+}
+
+.conteudo-container {
+  /* Estilos específicos para a coluna de conteúdo */
+  background-color: #ffffff; /* Cor de fundo para o conteúdo */
+  padding: 10px; /* Espaçamento interno */
+  border: 1px solid #ddd; /* Borda para delimitar a coluna */
+  overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+}
+
 
   /* Estilos para os cards */
 .card {
@@ -367,7 +429,7 @@ section button:hover {
   flex-direction: column; /* Alinha os elementos verticalmente */
   align-items: center;
   justify-content: center;
-  gap: 20px; /* Espaço entre os itens da grade */ 
+  gap: 5px; /* Espaço entre os itens da grade */ 
   border: 2px solid #ad7600;
   border-radius: 10px;
   text-align: center;
@@ -394,34 +456,40 @@ section button:hover {
 .card h2 {
   width: 100%; /* Ocupa toda a largura do card */
   color: #484848;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600; /* Poppins Light */
   font-size: 14px; /* Tamanho da fonte do título */
   display: flex;
   flex-direction: column;
-  height: 10px; /* Ajuste a altura conforme necessário */
+  height: 12px; /* Ajuste a altura conforme necessário */
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  gap: 10px; /* Espaço entre os itens da grade */ 
 }
 
 .subtitulo  {
   display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300; /* Poppins Light */
   font-size: 12px;
-  font-weight: bold;
   unicode-bidi: isolate;
   color: #484848;
+  margin: 5px 0;
 }
 
 .servico {
   /* Estilos para o nome do serviço */
   color: #484848;
-  font-size: 12px;
-  
+  font-family: "Poppins", sans-serif;
+  font-weight: 400; /* Poppins Light */
+  font-size: 12px;  
 }
 
 .card p {
   color: #666;
   font-size: 1rem; /* Tamanho da fonte do texto */
-  margin: 10px 0;
+  margin: 3px 0;
 }
 
 .card button {
@@ -556,6 +624,18 @@ section button:hover {
 
 .fa-whatsapp {
   margin-right: 5px; /* Adiciona um espaço à direita do ícone */
+}
+.rodape-coluna {
+  /* Estilos para as colunas do rodapé */
+}
+
+.nav-list {
+  /* Estilos para a lista de links */
+}
+
+.ativo {
+  /* Estilo para o item ativo */
+  font-weight: bold;
 }
 
 /* Define o estilo do rodapé */

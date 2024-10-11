@@ -126,12 +126,9 @@ class Tratamento {
     new Produto(remocao, remocaoALaser, "Remoção de Tatuagem", "Até 3Cm", "60 Minutos", 200.00, "Michele Sales", "remocaotatoo3cm.png"),
 
 ];
-
-  
   
   console.log(produtos);
-  
-    
+      
   // Função para extrair produtos filtrados
   function extrairProdutosFiltrados(tratamentos, filtros = {}) {
     const { servico } = filtros;
