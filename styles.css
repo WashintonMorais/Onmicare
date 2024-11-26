@@ -436,28 +436,33 @@ header {
 
 .formulario-agendamento .fechar-formulario {
   position: absolute;
-  top: 10px; /* Ajusta a posição vertical */
-  right: 10px; /* Ajusta a posição horizontal */
+  top: 0px; /* Ajusta a posição vertical */
+  right: 0px; /* Ajusta a posição horizontal */
   background-color: #ff0000;
   color: #ffffff; /* Cor padrão do ícone */
   font-size: 18px; /* Tamanho do texto do botão */
   font-weight: bold; /* Deixa o "X" em negrito */
-  border: 2px solid #ad7600; /* Adiciona uma borda */
-  border-radius: 50%; /* Deixa as bordas completamente arredondadas */
   width: 30px; /* Largura para criar um botão circular */
   height: 30px; /* Altura para criar um botão circular */
   display: flex; /* Centraliza o texto do botão */
   align-items: center; /* Alinha verticalmente o texto do botão */
   justify-content: center; /* Alinha horizontalmente o texto do botão */
   cursor: pointer;
-  z-index: 10;
+  z-index: 10; /* Garante que o botão esteja acima dos outros elementos */
   transition: all 0.3s ease; /* Transição suave para hover */
+  border: none;  /* Adiciona uma borda */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0; /* Remove margens extras dos elementos filhos */
 }
 
 .formulario-agendamento .fechar-formulario:hover {
-  background-color: #ff0000; /* Cor de fundo ao passar o mouse */
+  background-color: #4CAF50; /* Cor de fundo ao passar o mouse */
   color: #ffffff; /* Cor do texto ao passar o mouse */
-  transform: scale(1.2); /* Efeito de ampliação ao passar o mouse */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; 
 }
 
 
@@ -498,14 +503,13 @@ header {
   background-color: #f0ad4e;
 }
 
-
 #homevitrine {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  width: 100%; /* Ajuste a largura conforme necessário */
-  background-color: #ad7600; /* Adiciona uma cor de fundo */
+  width: 100%;
+  background-color: #ad7600;
   padding: 20px;
-
 }
+
 
 /* Container dos serviços com rolagem lateral */
 #servicos-container {
@@ -722,15 +726,23 @@ header {
 /* Botão de fechar */
 .fechar-card {
   position: absolute;
-  top: 0px;
-  right: 1px;
+  top: 0px; /* Ajusta a posição vertical */
+  right: 0px; /* Ajusta a posição horizontal */
   background-color: #ff0000;
-  border: none;
-  font-size: 18px;
-  color: #fff;
-  padding: 5px 10px;
+  color: #ffffff; /* Cor padrão do ícone */
+  font-size: 18px; /* Tamanho do texto do botão */
+  font-weight: bold; /* Deixa o "X" em negrito */
+  width: 30px; /* Largura para criar um botão circular */
+  height: 30px; /* Altura para criar um botão circular */
+  display: flex; /* Centraliza o texto do botão */
+  align-items: center; /* Alinha verticalmente o texto do botão */
+  justify-content: center; /* Alinha horizontalmente o texto do botão */
   cursor: pointer;
   z-index: 10; /* Garante que o botão esteja acima dos outros elementos */
+  transition: all 0.3s ease; /* Transição suave para hover */
+
+  border: none;  /* Adiciona uma borda */
+  padding: 5px 10px;
   margin: 0; /* Remove margens extras dos elementos filhos */
 }
 
