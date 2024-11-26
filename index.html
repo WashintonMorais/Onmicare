@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" sizes="16x16" href="img\favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="https://kit.fontawesome.com/7517304509.js" crossorigin="anonymous"></script>    <title>Onmicare Depilação a Laser</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">     
+    <script src="https://kit.fontawesome.com/7517304509.js" crossorigin="anonymous"></script>    
+    <title>Onmicare Depilação a Laser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">     
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 <header>
@@ -36,66 +39,96 @@
         </div>
     </section> 
 </header> 
+
+<!-- HEADER PRINCIPAL -->
 <section>
-        <div class="header-content">
+    <div class="header-content">
         <div class="logo">
-            <img src="img\Logoonmicare.png" alt="Logo da OnMicare">
+            <img src="img/Logoonmicare.png" alt="Logo da OnMicare">
         </div>
         <div class="title">
             <h1>ONMICARE</h1>
             <h2>VOCÊ AOS MEUS CUIDADOS</h2>
         </div>
-    <div class="search-container">
-            <input type="text" id="busca" placeholder="Pesquisar tratamento">
-            <button type="button">BUSCAR</button>
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon" style="color: #484848;"></i>
+            <input type="text" id="busca" placeholder="Pesquisar tratamento" oninput="buscarTratamento()">
+        </div>
+        
+        
     </div>
-    </div>
-</section>              
+</section>
+
+<!-- FILTROS -->
 <section>
     <div class="barranavegacao">
-        <button id="botao-filtrar" class="filtrar">
-            <i class="fa-solid fa-filter"></i> Filtrar Tratamento
+        <button id="exibir-servicos" onclick="exibirServicos()">
+            <i class="fa-solid fa-filter"></i>SERVIÇOS
         </button>
-        <div id="opcoes-tratamento" class="opcoes-tratamento">
-            <button id="botao-todos">Todos os Tratamentos</button>
-            <button id="botao-depilacaoFeminina">Depilação Feminina</button>
-            <button id="botao-depilacaoMasculina">Depilação Masculina</button>
-            <button id="botao-remocaoALaser">Remoção A Laser</button>  
-        </div>         
+        <span id="servico-selecionado">Selecione um Serviço</span>
+        <button id="botaoAgendar" onclick="abrirAgendamento()">Agendar Online</button>
     </div>
 </section>
+
+<!-- ÁREA DINÂMICA -->
+<div class="container">
+    <!-- Lista de serviços -->
+    <div id="servicos-container" class="opcoes-servicos"></div>
+    <!-- Lista de categorias -->
+    <div id="categorias-container" class="opcoes-categorias"></div>
+    
+</div>
+
+<!-- OUTRAS SEÇÕES -->
 <section>
     <div class="home">
-        <div class="homevitrine vitrine" id="homevitrine">
-            <!-- Conteúdo da vitrine -->
+        <div class="barra-filtros">
+            <button onclick="irParaPaginaInicial()">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <!-- Ícone e texto inicial para o Serviço -->
+            <img id="icone-servico" class="icone-filtro oculto" alt="Icone do Serviço" />
+            <span id="servico-atual" class="filtro-selecionado">Selecione um Serviço</span>
+
+            <!-- Ícone e texto inicial para a Categoria -->
+            <img id="icone-categoria" class="icone-filtro oculto" alt="Icone da Categoria" />
+            <span id="categoria-atual" class="filtro-selecionado">Selecione uma Categoria</span>
+
+            <!-- Botão de Filtros / Limpar Filtros -->
+            <button onclick="limparFiltros()" class="btn-limpar-filtros">
+                <i class="fa-solid fa-filter-circle-xmark"></i> Filtros
+            </button>
+
+            <!-- Botões de ordenação -->
+        <div class="barra-ordenacao">             
+            <button onclick="ordenarProdutos('az')">
+                <i class="fa-solid fa-arrow-down-a-z"></i></button>
+            <button onclick="ordenarProdutos('za')">
+                <i class="fa-solid fa-arrow-down-z-a"></i></button>
+            <button onclick="ordenarProdutos('maior-preco')">
+                <i class="fa-solid fa-arrow-down-9-1"></i></button>
+            <button onclick="ordenarProdutos('menor-preco')">
+                <i class="fa-solid fa-arrow-down-1-9"></i></button>
         </div>
-<div class="homeconteudo vitrine" id="conteudo">
+
+        </div>
+
+        <!-- Conteúdo da vitrine -->
+        <div id="produtos-container" class="opcoes-produtos"></div>
+         
+    </div>
 </section>
-    <section>
-        <div class="slider">
-            <div class="slide">
-              <h2>Atendimento</h2>
-              <p>Pensamos em tudo para você com um atendimento diferenciado e personalizado.</p>
-            </div>
-            <div class="slide">
-              <h2>Tecnologia</h2>
-              <p>Contamos com a mais avançada tecnologia de depilação a LASER.</p>
-            </div>
-            <div class="slide">
-              <h2>Profissionais Qualificados</h2>
-              <p> Uma equipe de profissionais experts em depilação a LASER pronta para te atender.</p>  
-              </div>
-              <div class="pagination">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-            </div>             
-   </section>    
+
 <footer>
-         <div id="container-cards"></div>
- </footer>
- </body>
+    <div id="rodape-container" class="rodape-container">
+      <div id="coluna-titulos" class="coluna-titulos"></div>
+      <div id="coluna-conteudo" class="coluna-conteudo" style="display: none;"></div>
+    </div>
+  </footer>
+
 <script src="app.js"></script>
-<script src="dadosrodape.js"></script>
+<script src="appodape.js"></script>
+<script src="appagendamento.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</body>
 </html>
