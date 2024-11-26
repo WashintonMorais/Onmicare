@@ -433,6 +433,72 @@ header {
   background-color: #fff;
 }
 
+
+.formulario-agendamento .fechar-formulario {
+  position: absolute;
+  top: 10px; /* Ajusta a posição vertical */
+  right: 10px; /* Ajusta a posição horizontal */
+  background-color: #ff0000;
+  color: #ffffff; /* Cor padrão do ícone */
+  font-size: 18px; /* Tamanho do texto do botão */
+  font-weight: bold; /* Deixa o "X" em negrito */
+  border: 2px solid #ad7600; /* Adiciona uma borda */
+  border-radius: 50%; /* Deixa as bordas completamente arredondadas */
+  width: 30px; /* Largura para criar um botão circular */
+  height: 30px; /* Altura para criar um botão circular */
+  display: flex; /* Centraliza o texto do botão */
+  align-items: center; /* Alinha verticalmente o texto do botão */
+  justify-content: center; /* Alinha horizontalmente o texto do botão */
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease; /* Transição suave para hover */
+}
+
+.formulario-agendamento .fechar-formulario:hover {
+  background-color: #ff0000; /* Cor de fundo ao passar o mouse */
+  color: #ffffff; /* Cor do texto ao passar o mouse */
+  transform: scale(1.2); /* Efeito de ampliação ao passar o mouse */
+}
+
+
+/* Outros estilos */
+.formulario-agendamento {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.formulario-agendamento form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-agendamento input,
+.formulario-agendamento select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formulario-agendamento button {
+  padding: 10px 20px;
+  background-color: #ad7600;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario-agendamento button:hover {
+  background-color: #f0ad4e;
+}
+
+
 #homevitrine {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%; /* Ajuste a largura conforme necessário */

@@ -506,3 +506,20 @@ function buscarTratamento() {
         containerProdutos.appendChild(cardProduto);
     });
 }
+
+  // Ajusta o slide visível ao redimensionar a tela
+  window.addEventListener('resize', () => {
+    showSlide(currentIndex);
+    });
+  
+    document.addEventListener('DOMContentLoaded', function () {
+      // Garantir que o DOM foi completamente carregado
+      const botaoAgendar = document.getElementById('botaoAgendar');
+    
+      if (botaoAgendar) {
+        botaoAgendar.addEventListener('click', function () {
+          // Chama a função para criar o formulário de agendamento
+          criarFormularioAgendamento(produtos, 'formulario-container');
+        });
+      }
+    });
