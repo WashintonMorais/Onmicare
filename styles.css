@@ -506,96 +506,60 @@ header {
 #homevitrine {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   width: 100%;
-  background-color: #ad7600;
-  padding: 20px;
+  padding: 5px;
 }
 
-
-/* Container dos serviços com rolagem lateral */
-#servicos-container {
-  display: flex; /* Exibe os itens na mesma linha */
-  overflow-x: auto; /* Permite rolagem horizontal */
-  gap: 20px; /* Espaçamento entre os serviços */
-  padding: 10px;
-  width: 100%; /* Garante que ocupe 100% da largura do elemento pai */
-}
-
-/* Cards de serviço */
-.card-servico {
-  flex: 0 0 auto; /* Não faz com que o card cresça ou encolha */
-  width: auto; /* Largura fixa para cada card de serviço */
-  margin-right: 20px; /* Espaçamento entre os cards */
-  background-color: var(--cor-fundo-claro-principal);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  padding: 20px;
-}
 
 /* Filtros e exibição de serviços */
 .opcoes-servicos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
-  gap: 1px;
-  margin: 1px 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  gap: 20px; /* Espaço entre os itens do grid */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona uma cor de fundo */
+  width: 80%; /* Ajuste a largura conforme necessário */
+  height: auto;  
+  margin: auto; /* Centraliza o container horizontalmente */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+  justify-content: center;
+  padding: 20px;
+}
+.opcoes-servicos img{
+  width: 150px; /* Ocupa toda a largura do card */
+  height: 150px; /* Altura fixa da imagem */
+  object-fit: cover; /* Faz com que a imagem preencha todo o espaço disponível */
+  align-items: center; /* Centraliza os itens horizontalmente */
 }
 
 /* Cards de serviço, categoria e produto */
 .opcoes-servicos > div {
-  flex: 1 1 30%;
-  margin: 10px;
-  padding: 20px;
-  background-color: var(--cor-fundo-claro-principal);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-}
-
-/* Grid principal do card de serviço */
-.grid-servico {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* 1 parte para a coluna 1 e 2 partes para a coluna 2 */
-  gap: 1px;
-  align-items: center;
-}
-
-/* Primeira coluna (imagem e nome) */
-.grid-coluna-1 {
-  text-align: center; /* Centraliza o conteúdo da coluna 1 */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Alinha os elementos verticalmente */
   align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre os itens da grade */ 
+  border: 2px solid #ad7600;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona um fundo cinza claro */
+  width: auto; /* Largura fixa do card */
+  height: auto; /* Altura fixa do card */
 }
 
-
-.grid-coluna-1 img {
-  width: 80%; /* A imagem vai ocupar toda a largura da coluna 1 */
-  height: auto; /* Mantém a proporção da imagem */
-  max-width: 100%; /* Garante que a largura da imagem não ultrapasse a coluna */
-  border-radius: 8px; /* Cantos arredondados */
-  object-fit: cover; /* Ajusta a imagem sem distorcer */
-  margin-bottom: 10px; /* Espaçamento entre a imagem e o nome */
-}
-
-.grid-coluna-2 p {
-  text-align: left; /* Alinha o texto à esquerda */
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #333;
-}
 
 /* Botão abaixo do grid */
 .card-servico button {
-  margin-top: 10px;
-  padding: 10px 15px;
+  margin-top: 15px;
+  padding: 10px 10px;
   background-color: #4CAF50;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .card-servico button:hover {
@@ -604,9 +568,17 @@ header {
 
 .opcoes-categorias {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-  margin: 20px 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  gap: 20px; /* Espaço entre os itens do grid */
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona uma cor de fundo */
+  width: 80%; /* Ajuste a largura conforme necessário */
+  height: auto;  
+  margin: auto; /* Centraliza o container horizontalmente */
+  margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
+  justify-content: center;
+  padding: 20px;
 }
 
 .opcoes-categorias button {
@@ -630,19 +602,24 @@ header {
 
 
 .opcoes-categorias > div {
-  flex: 1 1 30%;
-  margin: 10px;
-  padding: 20px;
-  background-color: var(--cor-fundo-claro-principal);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço entre os itens da grade */ 
+  border: 2px solid #ad7600;
+  border-radius: 10px;
   text-align: center;
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+  background-color: #ffffff; /* Adiciona um fundo cinza claro */
+  width: auto; /* Largura fixa do card */
+  height: auto; /* Altura fixa do card */
 }
 
 .opcoes-categorias img{
   width: 100%; /* Garante que as imagens ocupem 100% do espaço disponível */
   height: auto; /* Mantém a proporção das imagens */
-  max-width: 50px; /* Define o limite máximo de largura para as imagens */
+  max-width: 150px; /* Define o limite máximo de largura para as imagens */
   object-fit: cover; /* Faz com que as imagens se ajustem sem distorção */
 }
 
@@ -677,10 +654,10 @@ header {
 }
 
 .opcoes-produtos img {
-  width: 150px; /* Ocupa toda a largura do card */
-  height: 150px; /* Altura fixa da imagem */
-  object-fit: cover; /* Faz com que a imagem preencha todo o espaço disponível */
-  align-items: center; /* Centraliza os itens horizontalmente */
+  width: 100%; /* Garante que as imagens ocupem 100% do espaço disponível */
+  height: auto; /* Mantém a proporção das imagens */
+  max-width: 150px; /* Define o limite máximo de largura para as imagens */
+  object-fit: cover; /* Faz com que as imagens se ajustem sem distorção */
 }
 
 /* Estilo geral para o grid de detalhes */
@@ -693,25 +670,65 @@ header {
   padding: 15px; /* Espaçamento interno para o conteúdo */
   background-color: #fff; /* Fundo branco */
   border-radius: 5px; /* Bordas arredondadas */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */ 
+}
+
+.card-detalhes 
+{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 10px; /* Arredonda as bordas */ 
+  border: 5px solid #484848;
+  max-width: 90%; /* Limita a largura máxima do card */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  max-height: 80vh; /* Ajuste o valor conforme necessário */
+  overflow-y: auto; /* Adiciona scroll vertical */
 }
 
 /* Coluna 1: Conteúdo centralizado e alinhado */
-.grid-coluna-1 {
+.grid-detalhe-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  display: flex; /* Mantém flex para alinhamento */
+  flex-direction: column; /* Alinhamento vertical */
+  justify-content: space-between; /* Distribui os elementos com espaçamento */
+  padding: 5px 5px;
+  font-size: 12px; /* Ajuste do tamanho da fonte */
+  color: #333;
+  text-align: left; /* Alinha o texto à esquerda */
+  margin: 0;
+  line-height: 2;
+  color: #333;
 }
-
+.grid-detalhe-1 img {
+  flex-shrink: 0; /* Garante que a imagem não diminua além do tamanho natural */
+  width: 100%; /* A imagem ocupa 40% da largura da coluna 1 */
+  max-width: 200px; /* Limita a largura máxima da imagem */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 8px; /* Adiciona cantos arredondados */
+}
 /* Coluna 2: Conteúdo espaçado e alinhado */
-.grid-coluna-2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
+.grid-detalhe-2 {
+  display: flex; /* Mantém flex para alinhamento */
+  flex-direction: column; /* Alinhamento vertical */
+  justify-content: space-between; /* Distribui os elementos com espaçamento */
+  padding: 5px 5px;
+  font-size: 12px; /* Ajuste do tamanho da fonte */
+  color: #333;
+  text-align: left; /* Alinha o texto à esquerda */
+  margin: 0;
+  line-height: 2;
+  color: #333;
 }
 
 /* Imagens em ambas as colunas */
@@ -725,25 +742,24 @@ header {
 
 /* Botão de fechar */
 .fechar-card {
-  position: absolute;
-  top: 0px; /* Ajusta a posição vertical */
-  right: 0px; /* Ajusta a posição horizontal */
+  position: fixed; /* Fixa o botão na tela */
+  top: 10px; /* Ajusta a posição vertical para ficar distante do topo */
+  right: 10px; /* Ajusta a posição horizontal para ficar distante da borda direita */
+  width: 35px; /* Define um tamanho fixo para o botão */
+  height: 35px; /* Define um tamanho fixo para o botão */
   background-color: #ff0000;
   color: #ffffff; /* Cor padrão do ícone */
-  font-size: 18px; /* Tamanho do texto do botão */
+  font-size: 20px; /* Ajusta o tamanho da fonte */
   font-weight: bold; /* Deixa o "X" em negrito */
-  width: 30px; /* Largura para criar um botão circular */
-  height: 30px; /* Altura para criar um botão circular */
   display: flex; /* Centraliza o texto do botão */
   align-items: center; /* Alinha verticalmente o texto do botão */
   justify-content: center; /* Alinha horizontalmente o texto do botão */
   cursor: pointer;
-  z-index: 10; /* Garante que o botão esteja acima dos outros elementos */
   transition: all 0.3s ease; /* Transição suave para hover */
-
   border: none;  /* Adiciona uma borda */
   padding: 5px 10px;
-  margin: 0; /* Remove margens extras dos elementos filhos */
+  margin: 0; /* Remove margens extras dos elementos filhos */  
+  z-index: 9999; /* Garante que o botão ficará acima de outros elementos */
 }
 
 .fechar-card:hover {
@@ -776,7 +792,6 @@ button:hover {
   margin-bottom: 10px; /* Espaçamento entre os parágrafos */
 }
 
-
 /* Responsividade para exibição em telas menores */
 @media (max-width: 768px) {
   .opcoes-servicos,
@@ -799,12 +814,100 @@ button:hover {
   .grid-coluna-1, .grid-coluna-2 {
     text-align: center;
   }
-  .fechar-card {
-    top: 10px;
-    right: 10px;
-    font-size: 16px;
-}
 
+  @media (max-width: 768px) {
+    .grid-detalhes {
+      grid-template-columns: 1fr; /* Uma única coluna para todo o card */
+      grid-template-rows: auto auto; /* Duas linhas automáticas */
+      padding: 1px 0px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
+    }
+  
+    .grid-detalhe-1 {
+      display: flex; /* Flexbox para alinhar imagem e conteúdo */
+      flex-direction: row; /* Organiza o conteúdo em linha */
+      align-items: center; /* Centraliza verticalmente a imagem e o texto */
+      gap: 2px; /* Espaçamento entre a imagem e o conteúdo */
+      padding: 5px 5px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
+
+    }
+    .grid-detalhe-1 img {
+      flex-shrink: 0; /* Garante que a imagem não diminua além do tamanho natural */
+      width: 40%; /* A imagem ocupa 40% da largura da coluna 1 */
+      max-width: 200px; /* Limita a largura máxima da imagem */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 8px; /* Adiciona cantos arredondados */
+    }
+    
+    .grid-detalhe-1 .conteudo-detalhes {
+      flex: 1; /* O texto ocupa o restante do espaço da coluna 1 */
+      display: flex;
+      flex-direction: column; /* Alinha os textos em coluna */
+      gap: 10px; /* Espaçamento entre os elementos */
+    } 
+    .imagem-produto {
+      flex: 1; /* Faz a imagem ocupar todo o lado esquerdo */
+      max-width: 100%; /* Ajusta a largura máxima da imagem */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 5px; /* Bordas arredondadas */
+      object-fit: cover; /* Garante que a imagem se ajuste ao espaço disponível */
+      padding: 0px 0px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */
+
+    }
+  
+    .conteudo-detalhes {
+      flex: 2; /* Faz o restante do conteúdo ocupar o lado direito */
+      display: flex; /* Permite alinhar os textos verticalmente */
+      flex-direction: column; /* Organiza os itens em uma coluna */
+      justify-content: center; /* Centraliza verticalmente os textos */
+      gap: 10px; /* Espaçamento entre os elementos do conteúdo */
+    }
+  
+    .grid-detalhe-2 {
+      display: flex; /* Mantém flex para alinhamento */
+      flex-direction: column; /* Alinhamento vertical */
+      justify-content: space-between; /* Distribui os elementos com espaçamento */
+      padding: 5px 5px;
+      font-size: 11px; /* Ajuste do tamanho da fonte */
+      color: #333;
+      text-align: left; /* Alinha o texto à esquerda */
+      margin: 0;
+      line-height: 1,1;
+      color: #333;
+    }
+
+  /* Posicionamento do botão de fechar */
+  .fechar-card {  position: fixed; /* Fixa o botão na tela */
+    top: 10px; /* Ajusta a posição vertical para ficar distante do topo */
+    right: 10px; /* Ajusta a posição horizontal para ficar distante da borda direita */
+    width: 35px; /* Define um tamanho fixo para o botão */
+    height: 35px; /* Define um tamanho fixo para o botão */
+    font-size: 20px; /* Ajusta o tamanho da fonte */
+    padding: 5px; /* Ajusta o preenchimento */
+    margin: 0; /* Remove margens extras */
+    z-index: 9999; /* Garante que o botão ficará acima de outros elementos */
+  }
+
+  /* Ajustando o botão de fechar para o hover */
+  .fechar-card:hover {
+    background-color: #d32f2f; /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto */
+  }
+
+  /* Tamanho do botão WhatsApp */
+  .whatsapp-button {
+    font-size: 12px; /* Reduz o tamanho do texto no botão */
+    padding: 5px 5px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */
+    font-weight: bold; /* Deixa o texto mais destacado */
+  }
+
+  /* Ajustando o ícone do WhatsApp */
+  .whatsapp-button i {
+    font-size: 12px; /* Tamanho do ícone reduzido para combinar com o botão */
+    margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+    padding: 5px 5px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */
+
+  }
+  }
 }
 
 @media (max-width: 480px) {
@@ -834,6 +937,35 @@ button:hover {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     width: 100%; /* Ajuste a largura conforme necessário */
 }
+
+.homevitrine {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.categoria {
+  margin-bottom: 20px;
+}
+
+.categoria h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.produtos-categoria {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.produtos-categoria span {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 
 /* Home Conteúdo */
 .homeconteudo {
@@ -874,6 +1006,7 @@ footer {
   padding: 15px; /* Espaçamento interno */
   transition: all 0.3s ease; /* Suaviza alterações de layout */
   box-shadow: 0 4px 6px rgb(251, 251, 251); /* Sombra leve */
+  font-size: 12px; /* Tamanho da fonte menor */
 }
 
 /* Configuração para quando o conteúdo adicional do rodapé é exibido */
@@ -881,7 +1014,7 @@ footer {
   flex-direction: column; /* Direção vertical */
   max-width: 250px; /* Largura máxima */
   flex: 0 0 auto; /* Fixa o tamanho da coluna */
-  gap: 10px; /* Reduz o espaçamento entre os itens */
+  gap: 5px; /* Reduz o espaçamento entre os itens */
   padding: 5px 5px; /* Espaçamento interno reduzido */
   font-size: 12px; /* Tamanho da fonte menor */
 }

@@ -167,15 +167,11 @@ const Categorias = [
             cardServico.classList.add('card-servico');
             cardServico.innerHTML = `
                 <div class="grid-servico">
-                    <div class="grid-coluna-1">
+                    <div class="grid-servico-1">
                         <img src="img/${servico.imagem}" alt="${servico.nome}" class="imagem-servico" />
                         <h3>${servico.nome}</h3>
                     </div>
-                    <div class="grid-coluna-2">
-                        <p class="descricao-meta"><strong>Indicações:</strong> ${servico.indicacao}</p>
-                        <p class="descricao-meta"><strong>Contraindicações:</strong> ${servico.contraindicacoes}</p>
-                        <p class="descricao-meta"><strong>Observações:</strong> ${servico.observacoes}</p>
-                    </div>
+
                 </div>
                 <button onclick="filtrarCategorias(${servico.id})">Ver Categorias</button>
             `;
@@ -188,338 +184,355 @@ const Categorias = [
         containerCategorias.style.display = 'none';
         }
         
-    function filtrarCategorias(servicoId) {
-        const containerCategorias = document.getElementById('categorias-container');
-        const containerServicos = document.getElementById('servicos-container');
-        const containerProdutos = document.getElementById('produtos-container');
-        
-        // Limpa categorias e produtos
-        containerCategorias.innerHTML = '';
-        containerProdutos.innerHTML = '';
-        
-         const servicoSelecionado = Servicos.find(servico => servico.id === servicoId);
-            if (!servicoSelecionado) {
-                alert("Serviço não encontrado.");
-                return;
-            }
-        
-            atualizarServicoSelecionado(servicoSelecionado);
-        
-            const categoriasFiltradas = Categorias.filter(categoria => categoria.servico.id === servicoId);
-            if (categoriasFiltradas.length === 0) {
-                containerCategorias.innerHTML = '<p>Nenhuma categoria disponível.</p>';
-                return;
-            }
-        
-            categoriasFiltradas.forEach(categoria => {
-                const cardCategoria = document.createElement('div');
-                cardCategoria.classList.add('card-categoria');
-                cardCategoria.innerHTML = `
-                    <img src="img/${categoria.imagem}" alt="${categoria.nome}" class="imagem-categoria" />
-                    <h4>${categoria.nome}</h4>
-                    <button onclick="filtrarProdutos(${servicoId}, ${categoria.id})">Ver Produtos</button>
-                `;
-                containerCategorias.appendChild(cardCategoria);
-         
-        
-            // Atualiza o ícone e a categoria atual no cabeçalho
-            cardCategoria.addEventListener('click', () => {
-                atualizarCategoriaSelecionada(categoria);
-            });
-        });
-            
-            // Exibe apenas categorias
-            containerServicos.style.display = 'none';
-            containerCategorias.style.display = 'grid';
-            containerProdutos.style.display = 'none';
-    
-    
-        }
-        
-    function filtrarProdutos(servicoId, categoriaId) {
-        const containerProdutos = document.getElementById('produtos-container');
-        const containerCategorias = document.getElementById('categorias-container');
-        
-        containerProdutos.innerHTML = ''; // Limpa os produtos
-        
-        const produtosFiltrados = produtos.filter(produto =>
-            produto.servico.id === servicoId && produto.categoria.id === categoriaId
-        );
-        
-        if (produtosFiltrados.length === 0) {
-            containerProdutos.innerHTML = '<p>Nenhum produto disponível.</p>';
-            return;
-        }
-        
-            produtosFiltrados.forEach(produto => {
-                const cardProduto = document.createElement('div');
-                cardProduto.classList.add('card-produto');
-                cardProduto.innerHTML = `
-                    <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
-                    <h5>${produto.titulo}</h5>
-                    <p>${produto.subtitulo || '-'}</p>
-                    <p>${produto.categoria.nome}</p>
-                    <p>Preço: R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
-                    <button onclick="mostrarDetalhes(${produto.id})">Detalhes</button>
-                    `;
-                containerProdutos.appendChild(cardProduto);
-            });
-        
-            // Exibe apenas produtos
-            containerCategorias.style.display = 'none';
-            containerProdutos.style.display = 'grid';
-        }
-        
-        function mostrarDetalhes(produtoId) {
-            const containerProdutos = document.getElementById('produtos-container');
-            if (!containerProdutos) {
-                console.error("Erro: containerProdutos não encontrado.");
-                return;
-            }
-        
-            containerProdutos.innerHTML = ''; // Limpa os produtos
-        
-            const produto = produtos.find(p => p.id === produtoId);
-            if (!produto) {
-                alert("Produto não encontrado.");
-                return;
-            }
-        
-            const cardDetalhes = document.createElement('div');
-            cardDetalhes.classList.add('card-detalhes');
-            cardDetalhes.innerHTML = `
-                <div class="grid-detalhes">
-                    <button class="fechar-card">&times;</button>
-                    <div class="grid-coluna-1">
-                        <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
-                        <h3>${produto.titulo}</h3>
-                        <p>${produto.subtitulo || '-'}</p>
-                        <p><strong>Categoria:</strong> ${produto.categoria.nome}</p>
-                        <p><strong>Duração:</strong> ${produto.duracao}</p>
-                        <p><strong>Profissional:</strong> ${produto.profissional}</p>
-                        <p><strong>Preço:</strong> R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
-                    </div>
-                    <div class="grid-coluna-2">
-                        <p><strong>Serviço:</strong> ${produto.servico.nome}</p>
-                        <p><strong>Indicação:</strong> ${produto.servico.indicacao}</p>
-                        <p><strong>Contraindicações:</strong> ${produto.servico.contraindicacoes}</p>
-                        <p><strong>Observações:</strong> ${produto.servico.observacoes}</p>
-                    </div>
-                </div>
-            `;
-        
-            const botaoFechar = cardDetalhes.querySelector('.fechar-card');
-            if (botaoFechar) {
-                botaoFechar.addEventListener('click', () => {
-                    containerProdutos.innerHTML = ''; // Remove o card ao clicar
-                    containerProdutos.style.display = 'none'; // Opcional: Ocultar o container
-                });
-            } else {
-                console.error("Erro: botão de fechar não encontrado.");
-            }
-            
-        
-            containerProdutos.appendChild(cardDetalhes);
-        }
-        
+        function filtrarCategorias(servicoId) {
+          const containerCategorias = document.getElementById('categorias-container');
+          const containerServicos = document.getElementById('servicos-container');
+          const containerProdutos = document.getElementById('produtos-container');
+          
+          // Limpa categorias e produtos
+          containerCategorias.innerHTML = '';
+          containerProdutos.innerHTML = '';
+          
+           const servicoSelecionado = Servicos.find(servico => servico.id === servicoId);
+              if (!servicoSelecionado) {
+                  alert("Serviço não encontrado.");
+                  return;
+              }
+          
+              atualizarServicoSelecionado(servicoSelecionado);
+          
+              const categoriasFiltradas = Categorias.filter(categoria => categoria.servico.id === servicoId);
+              if (categoriasFiltradas.length === 0) {
+                  containerCategorias.innerHTML = '<p>Nenhuma categoria disponível.</p>';
+                  return;
+              }
+          
+              categoriasFiltradas.forEach(categoria => {
+                  const cardCategoria = document.createElement('div');
+                  cardCategoria.classList.add('card-categoria');
+                  cardCategoria.innerHTML = `
+                      <img src="img/${categoria.imagem}" alt="${categoria.nome}" class="imagem-categoria" />
+                      <h4>${categoria.nome}</h4>
+                      <button onclick="filtrarProdutos(${servicoId}, ${categoria.id})">Ver Produtos</button>
+                  `;
+                  containerCategorias.appendChild(cardCategoria);
+           
+          
+              // Atualiza o ícone e a categoria atual no cabeçalho
+              cardCategoria.addEventListener('click', () => {
+                  atualizarCategoriaSelecionada(categoria);
+              });
+          });
+              
+              // Exibe apenas categorias
+              containerServicos.style.display = 'none';
+              containerCategorias.style.display = 'grid';
+              containerProdutos.style.display = 'none';
       
-      // Inicializa a exibição dos serviços ao carregar a página
-      document.addEventListener('DOMContentLoaded', () => {
-        exibirServicos();
-      });
-    
-      function atualizarServicoSelecionado(servico) {
-        const imagemServico = document.getElementById('icone-servico');
-        const servicoAtual = document.getElementById('servico-atual');
-        const servicoSelecionado = document.getElementById('servico-selecionado'); // Seleciona o span para exibição do serviço
-    
-         // Remove a classe 'oculto' para mostrar o ícone
-         imagemServico.classList.remove('oculto');
-        
-        imagemServico.src = `img/${servico.icone}`; // Atualiza o icone
-        imagemServico.alt = `Imagem do serviço ${servico.nome}`;
-        servicoAtual.textContent = servico.nome; // Atualiza o texto
-        if (servicoAtual) {
-            servicoAtual.textContent = servico.nome; // Atualiza o texto em um elemento específico
-        }
-    
-        if (servicoSelecionado) {
-            servicoSelecionado.textContent = servico.nome; // Atualiza o texto no span
-        }
-    }
-    
-    function atualizarCategoriaSelecionada(categoria) {
-        const imagemCategoria = document.getElementById('icone-categoria');
-        const categoriaAtual = document.getElementById('categoria-atual');
-    
-    
-         // Remove a classe 'oculto' para mostrar o ícone
-         imagemCategoria.classList.remove('oculto');   
-    
-        imagemCategoria.src = `img/${categoria.icone}`; // Atualiza o icone
-        imagemCategoria.alt = `Imagem da categoria ${categoria.nome}`;
-        categoriaAtual.textContent = categoria.nome; // Atualiza o texto
-    }
-    
-    
-    function obterProdutosFiltrados() {
-        const containerProdutos = document.getElementById('produtos-container');
-        if (!containerProdutos) {
-            console.error("Erro: containerProdutos não encontrado.");
-            return [];
-        }
-    
-        const produtosAtuais = Array.from(containerProdutos.children);
-    
-        return produtosAtuais.map(produtoElement => {
-            const titulo = produtoElement.querySelector('h5')?.textContent.trim(); // Nome do produto
-            const precoText = produtoElement.querySelector('p:nth-child(5)')?.textContent.trim() || '';
-    
-            // Extrai o número do texto do preço
-            const precoNumerico = parseFloat(
-                precoText
-                    .replace('Preço:', '') // Remove "Preço:"
-                    .replace('R$', '') // Remove "R$"
-                    .replace(/\./g, '') // Remove separadores de milhares
-                    .replace(',', '.') // Converte vírgula para ponto decimal
-                    .trim() // Remove espaços extras
-            );
-    
-            // Log de depuração em caso de preço inválido
-            if (isNaN(precoNumerico)) {
-                console.warn(`Preço inválido para o produto: ${titulo} - Texto do preço: "${precoText}"`);
-            }
-    
-            return {
-                elemento: produtoElement,
-                titulo,
-                preco: isNaN(precoNumerico) ? 0 : precoNumerico, // Valor padrão 0 para evitar erros
-            };
-        });
-    }
-    
-function limparFiltros() {
-    // Redefine os textos e ícones de Serviço e Categoria
-    document.getElementById('icone-servico').classList.add('oculto');
-    document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
-    document.getElementById('icone-categoria').classList.add('oculto');
-    document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
-    document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
-
-    
-    // Opcional: Redefine os filtros de produtos
+      
+          }
+          
+      function filtrarProdutos(servicoId, categoriaId) {
+          const containerProdutos = document.getElementById('produtos-container');
+          const containerCategorias = document.getElementById('categorias-container');
+          
+          containerProdutos.innerHTML = ''; // Limpa os produtos
+          
+          const produtosFiltrados = produtos.filter(produto =>
+              produto.servico.id === servicoId && produto.categoria.id === categoriaId
+          );
+          
+          if (produtosFiltrados.length === 0) {
+              containerProdutos.innerHTML = '<p>Nenhum produto disponível.</p>';
+              return;
+          }
+          
+              produtosFiltrados.forEach(produto => {
+                  const cardProduto = document.createElement('div');
+                  cardProduto.classList.add('card-produto');
+                  cardProduto.innerHTML = `
+                      <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
+                      <h5>${produto.titulo}</h5>
+                      <p>${produto.subtitulo || '-'}</p>
+                      <p>${produto.categoria.nome}</p>
+                      <p>Preço: R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                      <button onclick="mostrarDetalhes(${produto.id})">Detalhes</button>
+                      `;
+                  containerProdutos.appendChild(cardProduto);
+              });
+          
+              // Exibe apenas produtos
+              containerCategorias.style.display = 'none';
+              containerProdutos.style.display = 'grid';
+          }
+          
+  let cardDetalhesAtivo = null; // Variável global para armazenar o card ativo
+  // Função para mostrar o card de detalhes
+          function mostrarDetalhes(produtoId) {
+              if (cardDetalhesAtivo) {
+                  cardDetalhesAtivo.remove();
+                }
   
-    const containerServicos = document.getElementById('servicos-container');
-    containerServicos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
-
-    const containerCategorias = document.getElementById('categorias-container');
-    containerCategorias.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
-
-    const containerProdutos = document.getElementById('produtos-container');
-    containerProdutos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)  
-
-
-    // Reseta a ordenação
-    console.log('Filtros limpos!'); // Para fins de depuração
-}
-
-
-function ordenarProdutos(criterio) {
-    const produtosFiltrados = obterProdutosFiltrados();
-
-    switch (criterio) {
-        case 'az':
-            produtosFiltrados.sort((a, b) => a.titulo.localeCompare(b.titulo));
-            break;
-        case 'za':
-            produtosFiltrados.sort((a, b) => b.titulo.localeCompare(a.titulo));
-            break;
-        case 'maior-preco':
-            produtosFiltrados.sort((a, b) => parseFloat(b.preco) - parseFloat(a.preco));
-            break;
-        case 'menor-preco':
-            produtosFiltrados.sort((a, b) => parseFloat(a.preco) - parseFloat(b.preco));
-            break;
-        default:
-            console.error("Critério de ordenação desconhecido:", criterio);
-            return;
-    }
-
-    // Atualiza a exibição no DOM
-    const containerProdutos = document.getElementById('produtos-container');
-    if (!containerProdutos) {
-        console.error("Elemento #produtos-container não encontrado.");
-        return;
-    }
-
-    containerProdutos.innerHTML = ''; // Limpa o container
-
-    produtosFiltrados.forEach(produto => {
-        containerProdutos.appendChild(produto.elemento); // Reinsere os elementos ordenados
-    });
-}
-
-function normalizarTexto(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  }
-
-  function normalizarTexto(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-}
-
-function buscarTratamento() {
-    const termoBusca = normalizarTexto(document.getElementById('busca').value.trim());
-    const containerProdutos = document.getElementById('produtos-container');
-    const containerCategorias = document.getElementById('categorias-container');
-    const containerServicos = document.getElementById('servicos-container');
-
-    // Limpa exibição anterior
-    containerProdutos.innerHTML = '';
-    containerCategorias.style.display = 'none';
-    containerServicos.style.display = 'none';
-    containerProdutos.style.display = 'grid';
-
-    // Filtra produtos com base no termo de busca
-    const produtosFiltrados = produtos.filter(produto =>
-        normalizarTexto(produto.titulo).includes(termoBusca) ||
-        (produto.subtitulo && normalizarTexto(produto.subtitulo).includes(termoBusca)) ||
-        normalizarTexto(produto.categoria.nome).includes(termoBusca)
-    );
-
-    if (produtosFiltrados.length === 0) {
-        containerProdutos.innerHTML = '<p>Nenhum produto encontrado com os termos buscados.</p>';
-        return;
-    }
-
-    // Exibe os produtos encontrados
-    produtosFiltrados.forEach(produto => {
-        const cardProduto = document.createElement('div');
-        cardProduto.classList.add('card-produto');
-        cardProduto.innerHTML = `
+          const cardDetalhes = document.createElement('div');
+          cardDetalhes.classList.add('card-detalhes', 'ativo');   
+                    
+              const containerProdutos = document.getElementById('produtos-container');
+              if (!containerProdutos) {
+                  console.error("Erro: containerProdutos não encontrado.");
+                  return;
+              }
+          
+          
+              const produto = produtos.find(p => p.id === produtoId);
+              if (!produto) {
+                  alert("Produto não encontrado.");
+                  return;
+              }
+          
+   
+  cardDetalhes.innerHTML = `
+    <div class="grid-detalhes">
+        <button class="fechar-card">&times;</button>
+        <div class="grid-detalhe-1">
             <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
-            <h5>${produto.titulo}</h5>
-            <p>${produto.subtitulo || '-'}</p>
-            <p>${produto.categoria.nome}</p>
-            <p>Preço: R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
-            <button onclick="mostrarDetalhes(${produto.id})">Detalhes</button>
-        `;
-        containerProdutos.appendChild(cardProduto);
-    });
-}
-
-  // Ajusta o slide visível ao redimensionar a tela
-  window.addEventListener('resize', () => {
-    showSlide(currentIndex);
-    });
+            <div class="conteudo-detalhes">
+                <h3>${produto.titulo}</h3>
+                <p>${produto.subtitulo || '-'}</p>
+                <p><strong>Categoria:</strong> ${produto.categoria.nome}</p>
+                <p><strong>Duração:</strong> ${produto.duracao}</p>
+                <p><strong>Profissional:</strong> ${produto.profissional}</p>
+                <p><strong>Preço:</strong> R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                <button class="whatsapp-button">
+                    <i class="fa-brands fa-whatsapp"></i> Agendar via WhatsApp
+                </button>
+            </div>
+        </div>
+        <div class="grid-detalhe-2">
+            <p><strong>Serviço:</strong> ${produto.servico.nome}</p>
+            <p><strong>Indicação:</strong> ${produto.servico.indicacao}</p>
+            <p><strong>Contraindicações:</strong> ${produto.servico.contraindicacoes}</p>
+            <p><strong>Observações:</strong> ${produto.servico.observacoes}</p>
+        </div>
+    </div>
+  `;
+   
+              const botaoWhatsApp = cardDetalhes.querySelector('.whatsapp-button');
+              botaoWhatsApp.addEventListener('click', () => {
+                const numeroWhatsApp = produto.whatsapp || '5535988740679'; // Número padrão
+                const mensagem = `Olá, tenho interesse na ${produto.servico.nome} e gostaria de saber mais sobre o protocolo ${produto.categoria.nome} "${produto.titulo}".`;
+                window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`);
+              });    
   
-    document.addEventListener('DOMContentLoaded', function () {
-      // Garantir que o DOM foi completamente carregado
-      const botaoAgendar = document.getElementById('botaoAgendar');
-    
-      if (botaoAgendar) {
-        botaoAgendar.addEventListener('click', function () {
-          // Chama a função para criar o formulário de agendamento
-          criarFormularioAgendamento(produtos, 'formulario-container');
+              const botaoFechar = cardDetalhes.querySelector('.fechar-card');
+              if (botaoFechar) {
+                  botaoFechar.addEventListener('click', () => {
+                      cardDetalhes.remove();
+                  });
+              } else {
+                  console.error("Erro: botão de fechar não encontrado.");
+              }
+   
+              document.body.appendChild(cardDetalhes);
+              cardDetalhesAtivo = cardDetalhes;
+              cardDetalhes.style.zIndex = 100;           
+          
+              containerProdutos.appendChild(cardDetalhes);
+          }
+          
+        
+        // Inicializa a exibição dos serviços ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+          exibirServicos();
         });
+      
+        function atualizarServicoSelecionado(servico) {
+          const imagemServico = document.getElementById('icone-servico');
+          const servicoAtual = document.getElementById('servico-atual');
+          const servicoSelecionado = document.getElementById('servico-selecionado'); // Seleciona o span para exibição do serviço
+      
+           // Remove a classe 'oculto' para mostrar o ícone
+           imagemServico.classList.remove('oculto');
+          
+          imagemServico.src = `img/${servico.icone}`; // Atualiza o icone
+          imagemServico.alt = `Imagem do serviço ${servico.nome}`;
+          servicoAtual.textContent = servico.nome; // Atualiza o texto
+          if (servicoAtual) {
+              servicoAtual.textContent = servico.nome; // Atualiza o texto em um elemento específico
+          }
+      
+          if (servicoSelecionado) {
+              servicoSelecionado.textContent = servico.nome; // Atualiza o texto no span
+          }
       }
-    });
+      
+      function atualizarCategoriaSelecionada(categoria) {
+          const imagemCategoria = document.getElementById('icone-categoria');
+          const categoriaAtual = document.getElementById('categoria-atual');
+      
+      
+           // Remove a classe 'oculto' para mostrar o ícone
+           imagemCategoria.classList.remove('oculto');   
+      
+          imagemCategoria.src = `img/${categoria.icone}`; // Atualiza o icone
+          imagemCategoria.alt = `Imagem da categoria ${categoria.nome}`;
+          categoriaAtual.textContent = categoria.nome; // Atualiza o texto
+      }
+      
+      
+      function obterProdutosFiltrados() {
+          const containerProdutos = document.getElementById('produtos-container');
+          if (!containerProdutos) {
+              console.error("Erro: containerProdutos não encontrado.");
+              return [];
+          }
+      
+          const produtosAtuais = Array.from(containerProdutos.children);
+      
+          return produtosAtuais.map(produtoElement => {
+              const titulo = produtoElement.querySelector('h5')?.textContent.trim(); // Nome do produto
+              const precoText = produtoElement.querySelector('p:nth-child(5)')?.textContent.trim() || '';
+      
+              // Extrai o número do texto do preço
+              const precoNumerico = parseFloat(
+                  precoText
+                      .replace('Preço:', '') // Remove "Preço:"
+                      .replace('R$', '') // Remove "R$"
+                      .replace(/\./g, '') // Remove separadores de milhares
+                      .replace(',', '.') // Converte vírgula para ponto decimal
+                      .trim() // Remove espaços extras
+              );
+      
+              // Log de depuração em caso de preço inválido
+              if (isNaN(precoNumerico)) {
+                  console.warn(`Preço inválido para o produto: ${titulo} - Texto do preço: "${precoText}"`);
+              }
+      
+              return {
+                  elemento: produtoElement,
+                  titulo,
+                  preco: isNaN(precoNumerico) ? 0 : precoNumerico, // Valor padrão 0 para evitar erros
+              };
+          });
+      }
+      
+  function limparFiltros() {
+      // Redefine os textos e ícones de Serviço e Categoria
+      document.getElementById('icone-servico').classList.add('oculto');
+      document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
+      document.getElementById('icone-categoria').classList.add('oculto');
+      document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
+      document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
+  
+      
+      // Opcional: Redefine os filtros de produtos
+    
+      const containerServicos = document.getElementById('servicos-container');
+      containerServicos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
+  
+      const containerCategorias = document.getElementById('categorias-container');
+      containerCategorias.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
+  
+      const containerProdutos = document.getElementById('produtos-container');
+      containerProdutos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)  
+  
+  
+      // Reseta a ordenação
+      console.log('Filtros limpos!'); // Para fins de depuração
+  }
+  
+  
+  function ordenarProdutos(criterio) {
+      const produtosFiltrados = obterProdutosFiltrados();
+  
+      switch (criterio) {
+          case 'az':
+              produtosFiltrados.sort((a, b) => a.titulo.localeCompare(b.titulo));
+              break;
+          case 'za':
+              produtosFiltrados.sort((a, b) => b.titulo.localeCompare(a.titulo));
+              break;
+          case 'maior-preco':
+              produtosFiltrados.sort((a, b) => parseFloat(b.preco) - parseFloat(a.preco));
+              break;
+          case 'menor-preco':
+              produtosFiltrados.sort((a, b) => parseFloat(a.preco) - parseFloat(b.preco));
+              break;
+          default:
+              console.error("Critério de ordenação desconhecido:", criterio);
+              return;
+      }
+  
+      // Atualiza a exibição no DOM
+      const containerProdutos = document.getElementById('produtos-container');
+      if (!containerProdutos) {
+          console.error("Elemento #produtos-container não encontrado.");
+          return;
+      }
+  
+      containerProdutos.innerHTML = ''; // Limpa o container
+  
+      produtosFiltrados.forEach(produto => {
+          containerProdutos.appendChild(produto.elemento); // Reinsere os elementos ordenados
+      });
+  }
+  
+  function normalizarTexto(texto) {
+      return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+  
+    function normalizarTexto(texto) {
+      return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+  
+  function buscarTratamento() {
+      const termoBusca = normalizarTexto(document.getElementById('busca').value.trim());
+      const containerProdutos = document.getElementById('produtos-container');
+      const containerCategorias = document.getElementById('categorias-container');
+      const containerServicos = document.getElementById('servicos-container');
+  
+      // Limpa exibição anterior
+      containerProdutos.innerHTML = '';
+      containerCategorias.style.display = 'none';
+      containerServicos.style.display = 'none';
+      containerProdutos.style.display = 'grid';
+  
+      // Filtra produtos com base no termo de busca
+      const produtosFiltrados = produtos.filter(produto =>
+          normalizarTexto(produto.titulo).includes(termoBusca) ||
+          (produto.subtitulo && normalizarTexto(produto.subtitulo).includes(termoBusca)) ||
+          normalizarTexto(produto.categoria.nome).includes(termoBusca)
+      );
+  
+      if (produtosFiltrados.length === 0) {
+          containerProdutos.innerHTML = '<p>Nenhum produto encontrado com os termos buscados.</p>';
+          return;
+      }
+  
+      // Exibe os produtos encontrados
+      produtosFiltrados.forEach(produto => {
+          const cardProduto = document.createElement('div');
+          cardProduto.classList.add('card-produto');
+          cardProduto.innerHTML = `
+              <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
+              <h5>${produto.titulo}</h5>
+              <p>${produto.subtitulo || '-'}</p>
+              <p>${produto.categoria.nome}</p>
+              <p>Preço: R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+              <button onclick="mostrarDetalhes(${produto.id})">Detalhes</button>
+          `;
+          containerProdutos.appendChild(cardProduto);
+      });
+  }
+  
+    
+      document.addEventListener('DOMContentLoaded', function () {
+        // Garantir que o DOM foi completamente carregado
+        const botaoAgendar = document.getElementById('botaoAgendar');
+      
+        if (botaoAgendar) {
+          botaoAgendar.addEventListener('click', function () {
+            // Chama a função para criar o formulário de agendamento
+            criarFormularioAgendamento(produtos, 'formulario-container');
+          });
+        }
+      });
