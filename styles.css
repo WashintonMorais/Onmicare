@@ -13,7 +13,7 @@
   --cor-texto-principal: #484848; /* Cinza escuro para boa legibilidade */
   --cor-fundo-claro-principal: #fffff;
   --cor-fundo-claro-secundaria: #ffffff;
-  --cor-fundo-escuro: #222;
+  --cor-fundo-escuro: #484848;
   --cor-acento: #e5e5e5;
 }
 
@@ -31,7 +31,7 @@ body {
 
 /* Define a cor de fundo para todo o header */
 header {
-  background-color: #ad7600;
+  background-color: #4CAF50;
   border: none; 
 }
 .contato {
@@ -40,7 +40,6 @@ header {
   justify-content: space-between; /* Distribui os itens igualmente no espaço disponível */
   align-items: center; /* Centralizaos itens verticalmente */
   padding: 1px;     
-  background-color: #ad7600; /* Cor de fundo para a linha */
   color: #ffffff;
   gap: 0; /* Ajuste o valor de 'gap' conforme necessário */
   width: 80%; /* Ajuste a largura conforme necessário */
@@ -139,13 +138,12 @@ header {
   padding: 10px;
   margin-right: 10px; /* Espaço entre o campo de busca e o botão */
   border: 5px solid #ad7600;
-  border-radius: 20px; /* Borda arredondada */
   color: #484848; /* Cor do texto */
-  background-color: #e5e5e5;
   border-radius: 10px;
 }
-
-
+.search-container input:focus {
+  outline: none;
+}
 .search-icon {
   position: absolute;
   top: 50%;
@@ -162,7 +160,7 @@ header {
   border-radius: 20px; /* Borda arredondada */
   font-size: 14px;
   box-sizing: border-box;
-  background-color: #e5e5e5;
+  background-color: #ffffff;
   }
 
 
@@ -266,6 +264,8 @@ header {
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  font-weight: bold; /* Deixa o "X" em negrito */
+
 }
 
 .barranavegacao button:hover {
@@ -279,6 +279,9 @@ header {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold; /* Deixa o "X" em negrito */
+
+  
 }
 #botaoAgendar:hover{
   background-color: #ad7600;
@@ -473,7 +476,7 @@ header {
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 20px auto;
+  margin: auto auto;
   position: relative;
 }
 
@@ -483,25 +486,134 @@ header {
 }
 
 .formulario-agendamento input,
-.formulario-agendamento select {
+.formulario-agendamento select{
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.formulario-agendamento button {
-  padding: 10px 20px;
-  background-color: #ad7600;
-  color: white;
-  border: none;
+.formulario-agendamento form button{
+  padding: 5px;
+  margin-bottom: auto;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  cursor: pointer;
 }
 
-.formulario-agendamento button:hover {
-  background-color: #f0ad4e;
+.lista-produtos {
+  display: flex;
+  flex-direction: column; /* Itens dispostos verticalmente */
+  gap: 5px; /* Espaçamento entre os produtos */
 }
+
+.item-produto {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Definir 3 colunas de tamanho variável */
+  align-items: center; /* Alinhar os itens ao centro */
+  border: 1px solid #ccc;
+  padding: 1px 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 800px; /* Limitar a largura máxima */
+  margin: 0 auto; /* Centralizar os itens */
+  transition: background-color 0.3s;
+}
+
+.item-produto:hover {
+  background-color: #f0f0f0;
+}
+
+.coluna {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagem-produto-agenda {
+  width: 50px; /* Largura da imagem */
+  height: 50px; /* Altura da imagem */
+  object-fit: cover; /* Garantir que a imagem ocupe o espaço sem distorção */
+  margin-right: 5px; /* Espaçamento entre a imagem e o título */
+}
+
+.descricao {
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  font-size: 14px;
+  color: #484848;
+  line-height: .8; /* Controla o espaçamento entre as linhas de texto */
+  margin: 0; /* Remove a margem se necessário */
+  padding: 0; /* Remove o padding se necessário */
+}
+
+.preco-duracao {
+  flex-direction: column; /* Alinha os elementos verticalmente */
+  font-size: 14px;
+  color: #00796b;
+}
+
+.item-produto.selecionado {
+  background-color: #e0f7fa;
+  border-color: #00796b;
+}
+
+/* Estilos para a lista de procedimentos selecionados */
+#procedimentos-selecionados {
+  margin-top: 10px; /* Adiciona um pouco de espaço acima do botão */
+  display: flex;
+  flex-direction: column; /* Itens dispostos verticalmente */
+  gap: 5px; /* Espaçamento entre os itens */
+  max-height: 300px; /* Altura máxima para a lista */
+  overflow-y: auto; /* Adiciona barra de rolagem se necessário */  
+  margin-bottom: 10px; /* Espaço extra entre as seções de procedimentos */
+}
+
+/* Estilos para cada item de procedimento selecionado */
+.procedimento-selecionado {
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos entre o nome e o botão */
+  align-items: center; /* Alinha os itens verticalmente */
+  border: 1px solid #ad7600;
+  padding: 1px 10px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #484848;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover para cada item de procedimento */
+.procedimento-selecionado:hover {
+  background-color: #ccc; /* Cor de fundo ao passar o mouse */
+  color: #484848;
+
+}
+
+/* Estilo do nome do procedimento */
+.procedimento-selecionado span {
+  font-size: 14px;
+  color: #ffffff;
+  margin-right: 10px; /* Espaçamento entre o nome e o botão */
+  padding: 1px 10px;
+}
+
+/* Estilo do botão de remover */
+.remover-procedimento {
+  background-color: #ff0000; /* Cor de fundo do botão de remover */
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  padding: 3px 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 1px; /* Espaçamento entre o nome e o botão */
+}
+
+/* Efeito de hover no botão de remover */
+.remover-procedimento:hover {
+  background-color: #d32f2f; /* Cor de fundo ao passar o mouse */
+}
+
 
 #homevitrine {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -977,7 +1089,7 @@ button:hover {
 
 /* Estilo principal do rodapé */
 footer {
-  background-color: #ad7600; /* Cor de fundo do rodapé */
+  background-color: #4CAF50; /* Cor de fundo do rodapé */
   padding: 0px; /* Remove espaçamento interno */
 }
 
@@ -986,7 +1098,6 @@ footer {
   gap: 20px; /* Espaçamento entre as colunas */
   display: flex; /* Alinha os itens em linha */
   justify-content: space-between; /* Distribui as colunas igualmente */
-  background-color: #ad7600; /* Cor de fundo branco */
   border: none; /* Remove borda */
   padding: 10px 50px; /* Espaçamento interno */
   transition: all 0.3s ease; /* Suaviza alterações de layout */
@@ -1002,7 +1113,6 @@ footer {
   flex-wrap: wrap; /* Permite quebra de linha se necessário */
   gap: 20px; /* Espaçamento entre os itens */
   width: 100%; /* Ocupa toda a largura */
-  background-color: #ad7600; /* Cor de fundo branco */
   padding: 15px; /* Espaçamento interno */
   transition: all 0.3s ease; /* Suaviza alterações de layout */
   box-shadow: 0 4px 6px rgb(251, 251, 251); /* Sombra leve */
@@ -1030,7 +1140,6 @@ footer {
   margin-bottom: 10px; /* Margem inferior */
   transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza transições de cor e tamanho */
   padding: 5px 5px; /* Espaçamento interno */
-  background-color: #ad7600; /* Cor de fundo laranja */
 }
 
 /* Estilo para a coluna de conteúdo adicional */

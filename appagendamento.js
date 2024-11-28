@@ -1,7 +1,7 @@
 function formatarCelular(numero) {
     // Remove caracteres não numéricos
     let numeroLimpo = numero.replace(/\D/g, '');
-    
+  
     // Verifica se o número tem o formato esperado para celulares no Brasil
     if (numeroLimpo.length === 11) {
         // Adiciona o código do país se estiver ausente
@@ -38,8 +38,8 @@ function formatarCelular(numero) {
   function criarFormularioAgendamento(produtos, containerId) {
     const container = document.getElementById(containerId);
     if (!container) {
-        console.error(`Container com id ${containerId} não encontrado`);
-        return;
+      console.error(`Container com id ${containerId} não encontrado`);
+      return;
     }
   
     const formulario = document.createElement('div');
@@ -53,48 +53,53 @@ function formatarCelular(numero) {
   
     const form = document.createElement('form');
     form.innerHTML = `
-        <h2>Marque uma sessão</h2>
-        <input type="text" id="nome" name="nome" placeholder="Informe o seu nome" required>
-        <input type="email" id="email" name="email" placeholder="Informe seu e-mail" required>
-        <input type="tel" id="telefone" name="telefone" placeholder="Informe seu telefone +55 XX XXXXX-XXXX" required>
-        <select id="servico" name="servico">
-            <option value="">Selecione o Serviço</option>
-        </select>
-        <select id="categoria" name="categoria">
-            <option value="">Selecione a Categoria</option>
-        </select>
-        <select id="produto" name="produto">
-            <option value="">Selecione o Procedimento</option>
-        </select>
-        <input type="text" id="data" name="data" placeholder="Selecione a data">
-        <input type="time" id="hora" name="hora">
-        <button type="submit">Agendar</button>
+      <h2>Marque uma sessão</h2>
+      <input type="text" id="nome" name="nome" placeholder="Informe o seu nome" required>
+      <input type="email" id="email" name="email" placeholder="Informe seu e-mail" required>
+      <input type="tel" id="telefone" name="telefone" placeholder="Informe seu telefone +55 XX XXXXX-XXXX" required>
+      <select id="servico" name="servico">
+          <option value="">Selecione o Serviço</option>
+      </select>
+      <select id="categoria" name="categoria">
+          <option value="">Selecione a Categoria</option>
+      </select>
+      <div id="produto-lista" class="lista-produtos">
+          <option value="">Selecione o Procedimento</option>
+      </div>
+      <div id="procedimentos-selecionados" class="procedimentos-selecionados">
+          <!-- Aqui serão exibidos os procedimentos selecionados -->
+      </div>
+      <input type="text" id="data" name="data" placeholder="Selecione a data" required>
+      <input type="time" id="hora" name="hora" placeholder="Selecione a hora" required>
+      <input type="hidden" id="produto" name="produto"> <!-- Campo oculto para armazenar o produto selecionado -->
+      <button type="submit">Agendar</button>
     `;
     formulario.appendChild(form);
   
+    // Função para criar opções nos selects
     function criarOpcoes(select, dados, textoInicial) {
-        select.innerHTML = ''; // Limpar as opções existentes
-        const optionInicial = document.createElement('option');
-        optionInicial.value = '';
-        optionInicial.textContent = textoInicial;
-        optionInicial.selected = true;
-        optionInicial.disabled = true;
-        select.appendChild(optionInicial);
+      select.innerHTML = ''; // Limpar as opções existentes
+      const optionInicial = document.createElement('option');
+      optionInicial.value = '';
+      optionInicial.textContent = textoInicial;
+      optionInicial.selected = true;
+      optionInicial.disabled = true;
+      select.appendChild(optionInicial);
   
-        if (dados.length > 0) {
-            dados.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item;
-                option.textContent = item;
-                select.appendChild(option);
-            });
-        } else {
-            const option = document.createElement('option');
-            option.value = '';
-            option.textContent = 'Nenhum disponível';
-            option.disabled = true;
-            select.appendChild(option);
-        }
+      if (dados.length > 0) {
+        dados.forEach(item => {
+          const option = document.createElement('option');
+          option.value = item;
+          option.textContent = item;
+          select.appendChild(option);
+        });
+      } else {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'Nenhum disponível';
+        option.disabled = true;
+        select.appendChild(option);
+      }
     }
   
     // Popula o dropdown de serviços
@@ -102,31 +107,111 @@ function formatarCelular(numero) {
     criarOpcoes(form.querySelector('#servico'), servicosUnicos, 'Selecione o Serviço');
   
     form.querySelector('#servico').addEventListener('change', function () {
-        const servicoSelecionado = form.querySelector('#servico').value;
+      const servicoSelecionado = form.querySelector('#servico').value;
   
-        const categoriasDoServico = produtos
-            .filter(produto => produto.servico.nome === servicoSelecionado)
-            .map(produto => produto.categoria.nome);
+      const categoriasDoServico = produtos
+        .filter(produto => produto.servico.nome === servicoSelecionado)
+        .map(produto => produto.categoria.nome);
   
-        const categoriasUnicas = [...new Set(categoriasDoServico)];
-        criarOpcoes(form.querySelector('#categoria'), categoriasUnicas, 'Selecione a Categoria');
+      const categoriasUnicas = [...new Set(categoriasDoServico)];
+      criarOpcoes(form.querySelector('#categoria'), categoriasUnicas, 'Selecione a Categoria');
     });
   
     form.querySelector('#categoria').addEventListener('change', function () {
-        const servicoSelecionado = form.querySelector('#servico').value;
-        const categoriaSelecionada = form.querySelector('#categoria').value;
-  
-        const produtosDaCategoria = obterProdutos(servicoSelecionado, categoriaSelecionada)
-            .map(produto => produto.titulo);
-  
-        criarOpcoes(form.querySelector('#produto'), produtosDaCategoria, 'Selecione o Procedimento');
+      const servicoSelecionado = form.querySelector('#servico').value;
+      const categoriaSelecionada = form.querySelector('#categoria').value;
+    
+      // Obtém os produtos da categoria e serviço selecionados
+      const produtosDaCategoria = obterProdutos(servicoSelecionado, categoriaSelecionada);
+    
+      // Atualiza a lista de produtos
+      const listaProdutos = form.querySelector('#produto-lista');
+      listaProdutos.innerHTML = ''; // Limpa a lista existente
+    
+      if (produtosDaCategoria.length > 0) {
+        produtosDaCategoria.forEach(produto => {
+          const itemProduto = document.createElement('div');
+          itemProduto.classList.add('item-produto');
+          itemProduto.innerHTML = `
+            <div class="coluna imagem">
+                <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto-agenda">
+            </div>
+            <div class="coluna descricao">
+                <strong>${produto.titulo}</strong><br>
+                ${produto.subtitulo}
+            </div>
+            <div class="coluna preco-duracao">
+                <div>R$${produto.preco}</div>
+                <div>(${produto.duracao})</div>
+            </div>
+          `;
+    
+          // Adiciona um evento de clique para selecionar o produto
+          itemProduto.addEventListener('click', () => {
+            // Atualiza o valor do campo oculto com o nome do produto
+            form.querySelector('#produto').value = produto.titulo;
+    
+            // Marca o produto como selecionado
+            listaProdutos.querySelectorAll('.item-produto').forEach(el => el.classList.remove('selecionado'));
+            itemProduto.classList.add('selecionado');
+    
+            // Adiciona o procedimento selecionado à área de procedimentos
+            adicionarProcedimentoSelecionado(servicoSelecionado, categoriaSelecionada, produto.titulo);
+          });
+    
+          listaProdutos.appendChild(itemProduto);
+        });
+    
+        // Exibe a lista de produtos
+        listaProdutos.classList.remove('oculto');
+      } else {
+        const msgNenhumProduto = document.createElement('option');
+        msgNenhumProduto.textContent = 'Nenhum produto disponível';
+        msgNenhumProduto.disabled = true;
+        listaProdutos.appendChild(msgNenhumProduto);
+    
+        // Esconde a lista se não houver produtos
+        listaProdutos.classList.add('oculto');
+      }
     });
+  
+   // Função para adicionar o procedimento selecionado à lista de procedimentos
+  let procedimentosSelecionados = [];
+  
+  function adicionarProcedimentoSelecionado(servico, categoria, produtoTitulo) {
+    const procedimentoCompleto = `${servico} > ${categoria} > ${produtoTitulo}`;
+    if (!procedimentosSelecionados.includes(procedimentoCompleto)) {
+      procedimentosSelecionados.push(procedimentoCompleto);
+      atualizarProcedimentosSelecionados();
+    }
+  }
+  
+  // Função para atualizar a exibição dos procedimentos selecionados
+  function atualizarProcedimentosSelecionados() {
+    const divProcedimentos = form.querySelector('#procedimentos-selecionados');
+    divProcedimentos.innerHTML = ''; // Limpa a área dos procedimentos selecionados
+  
+    procedimentosSelecionados.forEach(procedimento => {
+      const procedimentoDiv = document.createElement('div');
+      procedimentoDiv.classList.add('procedimento-selecionado');
+      procedimentoDiv.innerHTML = `
+        <span>${procedimento}</span>
+        <button type="button" class="remover-procedimento">Remover</button>
+      `;
+      procedimentoDiv.querySelector('.remover-procedimento').addEventListener('click', () => {
+        procedimentosSelecionados = procedimentosSelecionados.filter(item => item !== procedimento);
+        atualizarProcedimentosSelecionados(); // Atualiza a lista após remoção
+      });
+  
+      divProcedimentos.appendChild(procedimentoDiv);
+    });
+  }
   
     // Configura o seletor de data
     flatpickr(form.querySelector('#data'), {
-        enableTime: false,
-        dateFormat: "Y-m-d",
-        minDate: "today",
+      enableTime: false,
+      dateFormat: "Y-m-d",
+      minDate: "today",
     });
   
     container.innerHTML = '';
@@ -134,41 +219,40 @@ function formatarCelular(numero) {
   
     // Botão "Fechar" para ocultar o formulário
     botaoFechar.addEventListener('click', function () {
-        formulario.style.display = 'none';
+      formulario.style.display = 'none';
     });
   
     // Submissão do formulário
     form.addEventListener('submit', (event) => {
-        event.preventDefault();
+      event.preventDefault();
   
-        const nome = form.querySelector('#nome').value;
-        const email = form.querySelector('#email').value;
-        const telefone = form.querySelector('#telefone').value;
-        const servico = form.querySelector('#servico').value;
-        const categoria = form.querySelector('#categoria').value;
-        const produto = form.querySelector('#produto').value;
-        const data = form.querySelector('#data').value;
-        const hora = form.querySelector('#hora').value;
+      const nome = form.querySelector('#nome').value;
+      const email = form.querySelector('#email').value;
+      const telefone = form.querySelector('#telefone').value;
+      const servico = form.querySelector('#servico').value;
+      const categoria = form.querySelector('#categoria').value;
+      const produto = form.querySelector('#produto').value; // Agora acessa corretamente o produto
+      const data = form.querySelector('#data').value;
+      const hora = form.querySelector('#hora').value;
   
-        const telefoneFormatado = formatarCelular(telefone);
-        if (!telefoneFormatado) {
-            alert('Por favor, insira um número de celular válido.');
-            return;
-        }
+      const telefoneFormatado = formatarCelular(telefone);
+      if (!telefoneFormatado) {
+        alert('Por favor, insira um número de celular válido.');
+        return;
+      }
   
-        if (!nome || !email || !servico || !categoria || !produto || !data || !hora) {
-            alert('Por favor, preencha todos os campos do formulário.');
-            return;
-        }
+      if (!nome || !email || !servico || !categoria || !data || !hora) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
   
-        console.log('Nome:', nome);
-        console.log('E-mail:', email);
-        console.log('Telefone:', telefoneFormatado);
-        console.log('Serviço:', servico);
-        console.log('Categoria:', categoria);
-        console.log('Produto:', produto);
-        console.log('Data:', data);
-        console.log('Hora:', hora);
+      if (!produto) {
+        alert('Por favor, selecione um produto');
+        return;
+      }
+  
+      // Exibir os dados na tela ou enviar para um servidor
+      alert(`Agendamento confirmado!`);
     });
   }
   
