@@ -507,17 +507,20 @@ header {
 }
 
 .item-produto {
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr 2fr 1fr; /* Definir 3 colunas de tamanho variável */
   align-items: center; /* Alinhar os itens ao centro */
+  justify-content: space-between;
   border: 1px solid #ccc;
-  padding: 1px 1px;
+  padding: 1px 10px 1px 1px; /* Espaço maior no lado direito */
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   max-width: 800px; /* Limitar a largura máxima */
-  margin: 0 auto; /* Centralizar os itens */
   transition: background-color 0.3s;
+  margin-bottom: 1px;
 }
 
 .item-produto:hover {
@@ -550,11 +553,21 @@ header {
   flex-direction: column; /* Alinha os elementos verticalmente */
   font-size: 14px;
   color: #00796b;
+
 }
 
 .item-produto.selecionado {
   background-color: #e0f7fa;
   border-color: #00796b;
+}
+.item-produto.selecionado::after {
+  content: '✔️'; /* Ícone de seleção */
+  position: absolute;
+  right: 1px; /* Adiciona uma margem maior do lado direito */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #4caf50; /* Cor do ícone */
 }
 
 /* Estilos para a lista de procedimentos selecionados */
