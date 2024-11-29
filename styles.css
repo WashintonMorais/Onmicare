@@ -90,30 +90,31 @@ header {
   align-items: center; /* Adiciona para centralizar verticalmente */
   background-color: #ffffff; /* Adiciona um fundo cinza claro */
   border: none;
-  padding: 0px 150px;
+  padding: 5px 100px;
 }
 .title {
   text-align: center; /* Centraliza os textos h1 e h2 */
-  margin-right: 20px;
+  margin-right: 100px;
 }
 .title h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 300; /* Poppins Light */
-  font-size: 2.2rem;
+  font-size: 30px;
   margin: 0;
   color: #ad7600; /* Cor do texto */
   text-align: center; /* Centraliza o H1 */
   padding: 0px;     
-
+  white-space: nowrap;
 }
 .title h2 {
   font-family: "Poppins", sans-serif;
-  font-weight: 200; /* Poppins ExtraLight */
-  font-size: 12px;
+  font-weight:200; /* Poppins ExtraLight */
+  font-size: 14px;
   margin: 0;
   color: #484848; /* Cor do texto H2 */
   text-align: center; /* Centraliza o H2 */
-  padding: 0px;     
+  padding: 0px;
+  white-space: nowrap;
 }
 
 .logo img {
@@ -186,128 +187,114 @@ header {
   }
 }
 
-
-
-.slider {
-  overflow-x: hidden;
+/* Estilo geral para a navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #f8f9fa; /* Cor de fundo da navbar */
+  padding: 10px 20px; /* Espaçamento interno */
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px 0;
-  scroll-behavior: smooth;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha itens verticalmente no centro */
 }
 
-.slide {
-  display: inline-block;
-  padding: 20px;
-  text-align: center;
-  flex-shrink: 0;
-  min-width: 300px;
-  max-width: 300px;
-}
-
-.pagination {
-  text-align: center;
-  margin-top: 20px;
+/* Contêiner da navbar */
+.container-fluid {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Distribui os itens ao longo da navbar */
+  align-items: center; /* Alinha o conteúdo verticalmente */
+  width: 100%; /* Para garantir que a navbar ocupe toda a largura disponível */
 }
 
-.dot {
-  height: 10px;
-  width: 10px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.active {
-  background-color: #777;
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 768px) {
-  .slider {
-    overflow-x: scroll;
-    justify-content: flex-start;
-  }
-
-  .slide {
-    min-width: 100%;
-  }
-
-  .pagination {
-    display: block;
-  }
-}
-
-/* Ajusta a navegação para telas menores */
-.barranavegacao {
+/* Estilo para os itens da navbar */
+.navbar-nav {
   display: flex;
-  justify-content: space-between; /* Distribui os itens logo, títulos e campo de busca */
-  padding: 5px 50px;
-  margin: 0 auto; /* Centraliza a barra horizontalmente */
-  background-color: #fff; /* Adiciona um fundo */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  align-items: center; /* Adiciona para centralizar verticalmente */
+  justify-content: center; /* Centraliza os itens da navbar */
+  gap: 20px; /* Espaçamento entre cada item */
 }
 
-.barranavegacao button {
-  margin: 0 auto; /* Centraliza a barra horizontalmente */
-  padding: 5px 12px;
-  background-color: #ad7600;
-  color: #fff;
+.nav-item /* Estilo do botão no estado hover */
+button:hover {
+  color: #ffffff;
+  background-color: #4CAF50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s ease;
-  font-weight: bold; /* Deixa o "X" em negrito */
-
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
-.barranavegacao button:hover {
-  background-color: #4CAF50;
-}
-
-#botaoAgendar {
-  padding: 5px 12px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+.nav-item /* Estilo do botão em estado normal */
+button {
+  background-color: transparent; /* Fundo transparente */
+  border: none; /* Sem borda */
+  color: #484848; /* Cor do texto */
+  font-size: 14px; /* Tamanho do texto */
+  padding: 5px 10px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
   cursor: pointer;
-  font-weight: bold; /* Deixa o "X" em negrito */
-
-  
-}
-#botaoAgendar:hover{
-  background-color: #ad7600;
 }
 
-@media screen and (max-width: 768px) {
-  .barranavegacao {
 
-      text-align: center;
-      padding: 5px 5px;
+/* Título da navbar à esquerda */
+.title-2 {
+  text-align: center; /* Centraliza os textos h1 e h2 */
+  margin-right: 30px;
+  height: auto;
+}
+
+/* Título do site (h1 e h2) dentro da navbar */
+.title-2 h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300; /* Poppins Light */
+  font-size: 30px;
+  margin: 0;
+  color: #ad7600; /* Cor do texto */
+  text-align: center; /* Centraliza o H1 */
+  padding: 0px;     
+  white-space: nowrap;
+}
+
+.title-2 h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight:200; /* Poppins ExtraLight */
+  font-size: 12px;
+  margin: 0;
+  color: #484848; /* Cor do texto H2 */
+  text-align: center; /* Centraliza o H2 */
+  padding: 0px;
+  white-space: nowrap;
+}
+
+/* Estilo para o 'Selecione um Serviço' */
+#servico-selecionado {
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap; /* Garante que o texto não quebre em várias linhas */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px; /* Menos espaço interno em telas pequenas */
+    flex-direction: column; /* Coloca o conteúdo da navbar em coluna */
+    align-items: center; /* Centraliza todos os itens */
   }
 
-  #exibir-servicos {
-      width: 25%;
-  }
- 
-  .opcoes-servicos img, .opcoes-categorias img {
-      width: 100px;
-      height: 100px;
+  /* Título fica centralizado na versão responsiva */
+  .title-2 {
+    align-items: center; /* Centraliza o título na tela */
+    margin-right: 0; /* Remove a margem direita */
   }
 
+  /* "Selecione um Serviço" fica abaixo do título */
   #servico-selecionado {
-      display: block;
-      margin-top: 10px;
+    margin-left: 0; /* Remove a margem esquerda */
+    margin-top: 10px; /* Adiciona um espaçamento superior */
   }
 }
+
 
 /* Estilos para a barra de filtros */
 .barra-filtros {
@@ -1063,10 +1050,6 @@ button:hover {
     width: 100%; /* Ajuste a largura conforme necessário */
 }
 
-.homevitrine {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
 
 .categoria {
   margin-bottom: 20px;
@@ -1098,6 +1081,138 @@ button:hover {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
+}
+
+/* Estilos Encapsulados em .custom-styles */
+
+/* Títulos */
+.custom-styles h1, .custom-styles h2, .custom-styles h3 {
+  color: #ad7600;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1px;
+  font-size: 30px; /* Tamanho da fonte menor */
+}
+
+/* Decoração para Títulos */
+.custom-styles .h-decor {
+  width: 60px;
+  height: 4px;
+  background-color: #ad7600;
+  margin: 10px auto;
+}
+
+/* Layout das Sections */
+.custom-styles .section {
+  padding: 40px 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-styles .section:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+/* Responsividade para Contêiner */
+.custom-styles .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Row e Colunas */
+.custom-styles .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.custom-styles .col-md-8, .custom-styles .col-md-4, .custom-styles .col-lg-8, .custom-styles .col-lg-4 {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Ajuste de Largura em Breakpoints */
+@media (max-width: 768px) {
+  .custom-styles .col-md-8, .custom-styles .col-md-4, .custom-styles .col-lg-8, .custom-styles .col-lg-4 {
+    flex: 100%;
+  }
+}
+
+/* Imagens */
+.custom-styles .video-box-poster img {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Largura máxima padronizada */
+  max-height: 500px; /* Altura máxima padronizada */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover; /* Garante que a imagem se ajuste sem distorcer */
+}
+
+/* Estilo dos Parágrafos */
+.custom-styles p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Listas */
+.custom-styles .marker-list-md {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.custom-styles .marker-list-md li {
+  margin-bottom: 10px;
+}
+
+/* Cards de Serviços */
+.custom-styles .service-card-style2 {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-styles .service-card-style2 h5 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.custom-styles .service-card-style2 ul {
+  text-align: left;
+}
+
+/* Estilo do link do menu âncora */
+.custom-styles a {
+  color: #ff7f50;
+  text-decoration: none;
+}
+
+.custom-styles a:hover {
+  color: #ff4500;
+}
+
+/* Botão */
+.custom-styles button {
+  background-color: #ff7f50;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-styles button:hover {
+  background-color: #ff4500;
 }
 
 /* Estilo principal do rodapé */

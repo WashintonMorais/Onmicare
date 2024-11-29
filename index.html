@@ -13,6 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">     
     <!-- Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (para os ícones) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -47,29 +52,68 @@
             <img src="img/Logoonmicare.png" alt="Logo da OnMicare">
         </div>
         <div class="title">
-            <h1>ONMICARE</h1>
-            <h2>VOCÊ AOS MEUS CUIDADOS</h2>
+            <h1>Michele Sales</h1>
+            <h2>Estetica Avançada</h2>
         </div>
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass search-icon" style="color: #484848;"></i>
             <input type="text" id="busca" placeholder="Pesquisar tratamento" oninput="buscarTratamento()">
-        </div>
-        
-        
+        </div>       
     </div>
 </section>
 
-<!-- FILTROS -->
 <section>
-    <div class="barranavegacao">
-        <button id="exibir-servicos" onclick="exibirServicos()">
-            <i class="fa-solid fa-filter"></i>  SERVIÇOS
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <!-- Logo ou nome do site, fixado à esquerda -->
+        <div class="title-2">
+          <h1>ONMICARE</h1>
+          <h2>VOCÊ AOS MEUS CUIDADOS</h2>
+        </div>
+        
+        <!-- Span para mostrar a seleção -->
+        <span id="conteudo-selecionado" class="nav-link"></span>
+  
+        <!-- Botão de colapso para telas pequenas -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <span id="servico-selecionado">Selecione um Serviço</span>
-        <button id="botaoAgendar" onclick="abrirAgendamento()">
-            <i class="fa-regular fa-calendar"></i>  AGENDAR</button>
-    </div>
-</section>
+  
+        <!-- Itens da Navbar -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" id="exibir-servicos" onclick="atualizarConteudo('SERVIÇOS')">
+                <i class="fa-solid fa-filter"></i> SERVIÇOS
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" id="quemSomosButton" onclick="atualizarConteudo('Quem Somos')">
+                Quem Somos
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" id="nossaTecnologiaButton" onclick="atualizarConteudo('Nossa Tecnologia')">
+                Nossa Tecnologia
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" id="nossosServicosButton" onclick="atualizarConteudo('Nossos Serviços')">
+                Nossos Serviços
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" id="botaoAgendar" onclick="atualizarConteudo('AGENDAR')">
+                <i class="fa-regular fa-calendar"></i> AGENDAR
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>  
+
+<span id="servico-selecionado" class="nav-link">Selecione um Serviço</span> 
 <div id="formulario-container"></div>
 <!-- ÁREA DINÂMICA -->
 <div class="container">
@@ -121,6 +165,12 @@
         <div id="produtos-container" class="opcoes-produtos"></div>
     </div>
 </section>
+<section>
+    <div class="custom-styles">
+    <div class="h-decor"></div>
+    <div id="content"></div> <!-- Local onde será inserido o conteúdo -->
+</div>
+</section>
 
 <footer>
     <div id="rodape-container" class="rodape-container">
@@ -132,6 +182,9 @@
 <script src="app.js"></script>
 <script src="appodape.js"></script>
 <script src="appagendamento.js"></script>
+<script src="paginas.js"></script>
+<!-- Bootstrap JS (necessário para o toggle do navbar) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
