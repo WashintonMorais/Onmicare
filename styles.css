@@ -636,6 +636,8 @@ button {
   margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
   justify-content: center;
   padding: 20px;
+  font-size: 16px;
+  color: #484848;
 }
 .opcoes-servicos img{
   width: 150px; /* Ocupa toda a largura do card */
@@ -660,6 +662,21 @@ button {
   height: auto; /* Altura fixa do card */
 }
 
+.card-servico /* Estilo do botão no estado hover */
+h3 {
+  color: #484848;
+  border: none;
+  font-weight: bold; /* Texto em negrito */
+  font-size: 16px;
+}
+.card-servico /* Estilo do botão no estado hover */
+p {
+  color: #484848;
+  border: none;
+  font-size: 12px;
+  text-align: left; /* Alinha o texto à esquerda */
+  padding-left: 10px;
+}
 
 /* Botão abaixo do grid */
 .card-servico button {
@@ -734,6 +751,13 @@ button {
   max-width: 150px; /* Define o limite máximo de largura para as imagens */
   object-fit: cover; /* Faz com que as imagens se ajustem sem distorção */
 }
+.card-categoria /* Estilo do botão no estado hover */
+h4 {
+  color: #484848;
+  border: none;
+  font-weight: bold; /* Texto em negrito */
+  font-size: 16px;
+}
 
 .opcoes-produtos {
   display: grid;
@@ -765,6 +789,24 @@ button {
   height: auto; /* Altura fixa do card */
 }
 
+.card-produto /* Estilo do botão no estado hover */
+h5 {
+  color: #484848;
+  border: none;
+  font-weight: bold; /* Texto em negrito */
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+.card-produto /* Estilo do botão no estado hover */
+p {
+  color: #484848;
+  border: none;
+  font-size: 13px;
+  text-align: left; /* Alinha o texto à esquerda */
+  margin: 0;
+  padding: 0;
+}
 .opcoes-produtos img {
   width: 100%; /* Garante que as imagens ocupem 100% do espaço disponível */
   height: auto; /* Mantém a proporção das imagens */
@@ -772,18 +814,6 @@ button {
   object-fit: cover; /* Faz com que as imagens se ajustem sem distorção */
 }
 
-/* Estilo geral para o grid de detalhes */
-.grid-detalhes {
-  position: relative; /* Necessário para posicionar o botão dentro do card */
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Define duas colunas com proporção igual */
-  gap: 5px; /* Espaçamento entre as colunas */
-  row-gap: 5px; /* Espaçamento entre as linhas */
-  padding: 15px; /* Espaçamento interno para o conteúdo */
-  background-color: #fff; /* Fundo branco */
-  border-radius: 5px; /* Bordas arredondadas */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */ 
-}
 
 .card-detalhes 
 {
@@ -802,10 +832,56 @@ button {
   z-index: 999;
   max-height: 80vh; /* Ajuste o valor conforme necessário */
   overflow-y: auto; /* Adiciona scroll vertical */
+  margin: 0;
+  padding: 0px,
 }
+
+/* Estilo geral para o grid de detalhes */
+.grid-detalhes {
+  position: relative; /* Necessário para posicionar o botão dentro do card */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px; /* Espaçamento entre as colunas */
+  row-gap: 5px; /* Espaçamento entre as linhas */
+  padding: 15px; /* Espaçamento interno para o conteúdo */
+  background-color: #fff; /* Fundo branco */
+  border-radius: 5px; /* Bordas arredondadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */ 
+  margin: 0;
+  padding: 20px;
+}
+
+.grid-detalhes p {
+  margin: 10px 10px; /* Espaço vertical entre parágrafos */
+  line-height: 1.6; /* Altura de linha para textos mais legíveis */
+}
+
+.grid-detalhes h3 {
+  font-size: 18px; /* Tamanho do título */
+  font-weight: bold; /* Negrito para o título */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+  text-align: center; /* Alinha o texto à centro */
+}
+
+.grid-detalhes p {
+  font-size: 14px; /* Tamanho padrão para textos */
+  color: #555; /* Cor de texto mais suave */
+  margin: 0;
+  padding: 0px;
+}
+
+.grid-detalhe-1 strong,
+.grid-detalhe-2 strong {
+  font-size: 14px; /* Tamanho para os textos em negrito */
+  font-weight: bold; /* Negrito */
+  color: #222; /* Cor mais escura */
+}
+
 
 /* Coluna 1: Conteúdo centralizado e alinhado */
 .grid-detalhe-1 {
+  flex: 1; /* Ocupa o espaço restante */
+  text-align: left; /* Alinha o texto à esquerda */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -814,13 +890,11 @@ button {
   display: flex; /* Mantém flex para alinhamento */
   flex-direction: column; /* Alinhamento vertical */
   justify-content: space-between; /* Distribui os elementos com espaçamento */
-  padding: 5px 5px;
   font-size: 12px; /* Ajuste do tamanho da fonte */
   color: #333;
   text-align: left; /* Alinha o texto à esquerda */
   margin: 0;
-  line-height: 2;
-  color: #333;
+  padding-top: 20px;
 }
 .grid-detalhe-1 img {
   flex-shrink: 0; /* Garante que a imagem não diminua além do tamanho natural */
@@ -828,20 +902,25 @@ button {
   max-width: 200px; /* Limita a largura máxima da imagem */
   height: auto; /* Mantém a proporção da imagem */
   border-radius: 8px; /* Adiciona cantos arredondados */
+  margin: 0 auto 15px; /* Centraliza a imagem e adiciona espaço abaixo */
 }
 /* Coluna 2: Conteúdo espaçado e alinhado */
 .grid-detalhe-2 {
+  flex: 2; /* Ocupa o dobro do espaço */
   display: flex; /* Mantém flex para alinhamento */
   flex-direction: column; /* Alinhamento vertical */
   justify-content: space-between; /* Distribui os elementos com espaçamento */
-  padding: 5px 5px;
+  margin: 0;
+  padding-top: 10px;
   font-size: 12px; /* Ajuste do tamanho da fonte */
   color: #333;
   text-align: left; /* Alinha o texto à esquerda */
-  margin: 0;
-  line-height: 2;
-  color: #333;
+  gap: 0px; /* Espaço entre os itens do grid */
+  padding-top: 30px;
+
 }
+
+
 
 /* Imagens em ambas as colunas */
 .imagem-servico,
@@ -927,45 +1006,60 @@ button:hover {
     text-align: center;
   }
 
-  @media (max-width: 768px) {
+/* Ajustes gerais para telas menores */
+@media screen and (max-width: 768px) {
+  .card-detalhes {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 10px; /* Arredonda as bordas */ 
+    border: 5px solid #484848;
+    max-width: 100%; /* O card ocupa quase toda a largura */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    max-height: 90vh; /* Ajuste o valor conforme necessário */
+    overflow-y: auto; /* Adiciona scroll vertical */
+    margin: 0;
+    padding: 10px; /* Reduz o padding para telas menores */
+  }
     .grid-detalhes {
       grid-template-columns: 1fr; /* Uma única coluna para todo o card */
       grid-template-rows: auto auto; /* Duas linhas automáticas */
-      padding: 1px 0px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
+      padding: 0px 0px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
     }
+  /* Títulos e textos */
+  .grid-detalhes h3 {
+    font-size: 16px; /* Reduzir o tamanho do título */
+    margin-bottom: 5px; /* Menor espaçamento */
+  }
+
+  .grid-detalhes p {
+    font-size: 12px; /* Reduzir o tamanho da fonte */
+    line-height: 1.8; /* Ajustar altura de linha */
+  }
   
     .grid-detalhe-1 {
       display: flex; /* Flexbox para alinhar imagem e conteúdo */
       flex-direction: row; /* Organiza o conteúdo em linha */
       align-items: center; /* Centraliza verticalmente a imagem e o texto */
       gap: 2px; /* Espaçamento entre a imagem e o conteúdo */
-      padding: 5px 5px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
-
-    }
+      padding: 10px 10px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */   
+      margin: 0;
+  }
     .grid-detalhe-1 img {
       flex-shrink: 0; /* Garante que a imagem não diminua além do tamanho natural */
       width: 40%; /* A imagem ocupa 40% da largura da coluna 1 */
-      max-width: 200px; /* Limita a largura máxima da imagem */
+      max-width: 150px; /* Limita a largura máxima da imagem */
       height: auto; /* Mantém a proporção da imagem */
       border-radius: 8px; /* Adiciona cantos arredondados */
     }
     
-    .grid-detalhe-1 .conteudo-detalhes {
-      flex: 1; /* O texto ocupa o restante do espaço da coluna 1 */
-      display: flex;
-      flex-direction: column; /* Alinha os textos em coluna */
-      gap: 10px; /* Espaçamento entre os elementos */
-    } 
-    .imagem-produto {
-      flex: 1; /* Faz a imagem ocupar todo o lado esquerdo */
-      max-width: 100%; /* Ajusta a largura máxima da imagem */
-      height: auto; /* Mantém a proporção da imagem */
-      border-radius: 5px; /* Bordas arredondadas */
-      object-fit: cover; /* Garante que a imagem se ajuste ao espaço disponível */
-      padding: 0px 0px; /* Ajusta o preenchimento para ficar proporcional ao novo tamanho */
-
-    }
-  
+ 
     .conteudo-detalhes {
       flex: 2; /* Faz o restante do conteúdo ocupar o lado direito */
       display: flex; /* Permite alinhar os textos verticalmente */
@@ -984,7 +1078,6 @@ button:hover {
       text-align: left; /* Alinha o texto à esquerda */
       margin: 0;
       line-height: 1,1;
-      color: #333;
     }
 
   /* Posicionamento do botão de fechar */
@@ -1050,38 +1143,6 @@ button:hover {
     width: 100%; /* Ajuste a largura conforme necessário */
 }
 
-
-.categoria {
-  margin-bottom: 20px;
-}
-
-.categoria h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.produtos-categoria {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.produtos-categoria span {
-  background-color: #f0f0f0;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-
-/* Home Conteúdo */
-.homeconteudo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 20px;
-}
 
 /* Estilos Encapsulados em .custom-styles */
 

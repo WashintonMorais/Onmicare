@@ -59,7 +59,25 @@ const Servicos = [
     "O Hakon utiliza 4 tipos de laser (Rubi, Alexandrite, Diodo e ND-YAG), ajustando o tratamento de acordo com o tipo de pele e pelo, proporcionando maior segurança e eficácia.",
     "remocao.png",
     "iconeremocao.png"
-  )
+  ),
+  new Servico(
+    "Sobrancelhas",
+    "1 Sessão",
+    "Melhora o design e a estética das sobrancelhas.",
+    "Não recomendado para pessoas com alergia a pigmentos ou em tratamento dermatológico.",
+    "Proporciona um look natural e harmônico, com técnicas avançadas.",
+    "sobrancelhas.png",
+    "iconeSobrancelhas.png"
+  ),
+  new Servico(
+    "Cuidados com a Pele",
+    "1 Sessão",
+    "Promove a hidratação e limpeza profunda da pele.",
+    "Não indicado para peles com alergias a componentes dos produtos.",
+    "Ideal para revitalizar a pele, promovendo frescor e juventude.",
+    "cuidadosPele.png",
+    "iconeCuidadosPele.png"
+  )  
 ];
 
 // Agrupando as categorias em um array
@@ -67,7 +85,12 @@ const Categorias = [
   new Categoria(Servicos[0], "Depilação Feminina", "imagemfem.jpg", "iconefem.png"),
   new Categoria(Servicos[0], "Depilação Masculina", "imagemmen.jpg", "iconemem.png"),
   new Categoria(Servicos[1], "Remoção de Tatuagem", "imagemremocaotatuagem.png","iconeremocaotatuagem.png"),
-  new Categoria(Servicos[1], "Remoção de Micropigmentação", "imagemremocaomicro.png", "iconeremocaomicro.png")
+  new Categoria(Servicos[1], "Remoção de Micropigmentação", "imagemremocaomicro.png", "iconeremocaomicro.png"),
+
+  new Categoria(Servicos[2], "Micropigmentação Sobrancelhas", "micropigmentacaoSobrancelhas.png", "iconemicropigmentacao.png"),
+  new Categoria(Servicos[3], "Tratamento a Laser para Pele", "tratamentoLaserPele.jpg", "iconeTratamentoLaserPele.png"),
+  new Categoria(Servicos[3], "Tratamento com Produtos para Pele","tratamentoProdutosPele.png","iconeTratamentoProdutosPele.png"),
+  new Categoria(Servicos[2], "Designer de Sobrancelhas", "designer.png", "iconedesigner.png"),
 ];
   
 // Criando os produtos
@@ -144,7 +167,28 @@ const Categorias = [
     
       new Produto(Servicos[1], Categorias[3], "Remoção de Micro", "Sobrancelhas", "60 Minutos", 200.00, "Michele Sales", "remocaomicro.png"),
       new Produto(Servicos[1], Categorias[2], "Remoção de Tatuagem 3Cm", "Até 3Cm", "60 Minutos", 200.00, "Michele Sales", "remocaotatoo3cm.png"),
+      new Produto(Servicos[1], Categorias[2], "Remoção de Tatuagem 5Cm", "Até 5Cm", "60 Minutos", 200.00, "Michele Sales", "remocaotatoo5cm.png"),
+      new Produto(Servicos[1], Categorias[2], "Remoção de Tatuagem 8Cm", "Até 8Cm", "60 Minutos", 200.00, "Michele Sales", "remocaotatoo8cm.png"),
     
+      new Produto(Servicos[2], Categorias[4], "Micropigmentação Fio a Fio", "Simula fios naturais", "90 Minutos", 350.00, "Michele Sales", "micropigmentacaoFioAFio.png"),
+      new Produto(Servicos[3], Categorias[5], "Black Peel", "Revitaliza e hidrata", "40 Minutos", 200.00, "Michele Sales", "blackpeel.png"),
+      new Produto(Servicos[3], Categorias[5], "Clareamento da Pele", "Remove manchas e revitaliza", "40 Minutos", 150.00, "Michele Sales", "clareamentoPeleLaser.png"),
+      new Produto(Servicos[3], Categorias[5], "Rejuvenescimento da Pele", "Remove manchas e revitaliza", "40 Minutos", 150.00, "Michele Sales", "rejuvenescimentoLaser.png"),
+
+      new Produto(Servicos[3], Categorias[5], "Clareamento das Axilas", "Clareia e revitaliza", "30 Minutos", 60.00, "Michele Sales", "clareamentoAxilasLaser.png"),
+      new Produto(Servicos[3], Categorias[5], "Clareamento da Virilha", "Clareia e revitaliza", "30 Minutos", 80.00, "Michele Sales", "clareamentoVirilhaLaser.png"),
+      new Produto(Servicos[3], Categorias[5], "Peeling de Carbono", "Limpesa de pele a Laser", "60 Minutos", 289.00, "Michele Sales", "peelingCarbono.png"),
+      new Produto(Servicos[3], Categorias[5], "Tratamento de Micose", "Tratamento da pele a Laser", "30 Minutos", 99.00, "Michele Sales", "tratamentoMicose.png"),   
+      new Produto(Servicos[3], Categorias[5], "Limpeza de Pele Profunda", "Limpesa a Laser", "90 Minutos", 150.00, "Michele Sales", "limpezaPeleLaser.png"),
+      new Produto(Servicos[3], Categorias[5], "Peeling Hexil Dermo Clareamento", "Limpesa de pele com produto", "60 Minutos", 150.00, "Michele Sales", "peelingHexil.png"),
+      new Produto(Servicos[3], Categorias[5], "Plástica dos Pés", "Spa dos Pés", "30 Minutos", 60.00, "Michele Sales", "peelingHexil.png"),
+
+      new Produto(Servicos[3], Categorias[6], "Peeling de Diamante", "Melhora a textura da pele", "60 Minutos", 250.00, "Michele Sales", "peelingDiamante.png"),
+      new Produto(Servicos[3], Categorias[6], "Limpeza de Pele Profunda", "Revitaliza e hidrata", "90 Minutos", 150.00, "Michele Sales", "limpezaPele.png"),
+      new Produto(Servicos[2], Categorias[7], "Designer de Sobrancelhas Feminimo", "Design perfeito para sobrancelhas", "15 Minutos", 35.00, "Michele Sales", "designerFeminino.png"),
+      new Produto(Servicos[2], Categorias[7], "Designer de Sobrancelhas Com Henna", "Design perfeito para sobrancelhas", "30 Minutos", 40.00, "Michele Sales", "designerHenna.png"),
+      new Produto(Servicos[2], Categorias[7], "Designer de Sobrancelhas Masculino", "Design perfeito para sobrancelhas", "15 Minutos", 30.00, "Michele Sales", "designerMasculino.png"),
+
     ];
 
     console.log(Servicos);
@@ -344,6 +388,14 @@ const Categorias = [
         document.addEventListener('DOMContentLoaded', () => {
           exibirServicos();
         });
+        document.addEventListener('DOMContentLoaded', function () {
+          const botao = document.getElementById('exibir-servicos');
+          if (botao) {
+              botao.onclick = exibirServicos;
+          } else {
+              console.error("Elemento com ID 'exibir-servicos' não foi encontrado.");
+          }
+      });              
       
         function atualizarServicoSelecionado(servico) {
           const imagemServico = document.getElementById('icone-servico');
