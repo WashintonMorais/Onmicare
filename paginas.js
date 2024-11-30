@@ -181,15 +181,4 @@ document.getElementById('quemSomosButton').addEventListener('click', exibirQuemS
 document.getElementById('nossaTecnologiaButton').addEventListener('click', exibirTecnologia);
 document.getElementById('nossosServicosButton').addEventListener('click', exibirTratamentos);
 
-
-// Em paginas.js ou outro arquivo relevante
-function atualizarConteudo(selecionado) {
-    document.getElementById('conteudo-selecionado').textContent = "=> " + selecionado;
-    
-    var myCollapse = document.getElementById('navbarNav');
-    var bsCollapse = new bootstrap.Collapse(myCollapse, {
-      toggle: false
-    });
-    bsCollapse.hide();
-  }
   

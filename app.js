@@ -3,7 +3,7 @@ let currentCategoryId = 1; // ID inicial para as categorias
 let currentProductId = 1;  // ID inicial para os produtos
 
 class Servico {
-  constructor(nome, sessoes, indicacao, contraindicacoes, observacoes, imagem, icone) {
+  constructor(nome, sessoes, indicacao, contraindicacoes, observacoes, imagem) {
     this.id = currentServiceId++; // Atribui o ID e incrementa para o próximo serviço
     this.nome = nome;
     this.sessoes = sessoes;
@@ -11,18 +11,16 @@ class Servico {
     this.contraindicacoes = contraindicacoes;
     this.observacoes = observacoes;
     this.imagem = imagem;
-    this.icone = icone;
   }
 }
 
 // Atualizando a classe Categoria para incluir imagens e vincular ao serviço
 class Categoria {
-  constructor(servico, nome, imagem, icone) {
+  constructor(servico, nome, imagem) {
     this.id = currentCategoryId++; // Atribui o ID e incrementa para a próxima categoria
     this.servico = servico;  // Vincula a categoria ao serviço
     this.nome = nome;
     this.imagem = imagem;
-    this.icone = icone;
   }
 }
 
@@ -49,7 +47,6 @@ const Servicos = [
     "Não é indicado para pelos muito claros ou brancos, diabetes não controlada, pacientes com câncer, hipertensão descompensada, epilepsia, gravidez, ou erupções cutâneas.",
     "O Hakon utiliza 4 tipos de laser (Rubi, Alexandrite, Diodo e ND-YAG), ajustando o tratamento de acordo com o tipo de pele e pelo, proporcionando maior segurança e eficácia.",
     "depilacao.png",
-    "iconedepilacao.png"
   ),
   new Servico(
     "Remoção a laser",
@@ -58,7 +55,6 @@ const Servicos = [
     "Não é indicado para pelos muito claros ou brancos, diabetes não controlada, pacientes com câncer, hipertensão descompensada, epilepsia, gravidez, ou erupções cutâneas.",
     "O Hakon utiliza 4 tipos de laser (Rubi, Alexandrite, Diodo e ND-YAG), ajustando o tratamento de acordo com o tipo de pele e pelo, proporcionando maior segurança e eficácia.",
     "remocao.png",
-    "iconeremocao.png"
   ),
   new Servico(
     "Sobrancelhas",
@@ -67,7 +63,6 @@ const Servicos = [
     "Não recomendado para pessoas com alergia a pigmentos ou em tratamento dermatológico.",
     "Proporciona um look natural e harmônico, com técnicas avançadas.",
     "sobrancelhas.png",
-    "iconeSobrancelhas.png"
   ),
   new Servico(
     "Cuidados com a Pele",
@@ -76,21 +71,20 @@ const Servicos = [
     "Não indicado para peles com alergias a componentes dos produtos.",
     "Ideal para revitalizar a pele, promovendo frescor e juventude.",
     "cuidadosPele.png",
-    "iconeCuidadosPele.png"
   )  
 ];
 
 // Agrupando as categorias em um array
 const Categorias = [
-  new Categoria(Servicos[0], "Depilação Feminina", "imagemfem.jpg", "iconefem.png"),
-  new Categoria(Servicos[0], "Depilação Masculina", "imagemmen.jpg", "iconemem.png"),
-  new Categoria(Servicos[1], "Remoção de Tatuagem", "imagemremocaotatuagem.png","iconeremocaotatuagem.png"),
-  new Categoria(Servicos[1], "Remoção de Micropigmentação", "imagemremocaomicro.png", "iconeremocaomicro.png"),
+  new Categoria(Servicos[0], "Depilação Feminina", "imagemfem.jpg"),
+  new Categoria(Servicos[0], "Depilação Masculina", "imagemmen.jpg"),
+  new Categoria(Servicos[1], "Remoção de Tatuagem", "imagemremocaotatuagem.png"),
+  new Categoria(Servicos[1], "Remoção de Micropigmentação", "imagemremocaomicro.png"),
 
-  new Categoria(Servicos[2], "Micropigmentação Sobrancelhas", "micropigmentacaoSobrancelhas.png", "iconemicropigmentacao.png"),
-  new Categoria(Servicos[3], "Tratamento a Laser para Pele", "tratamentoLaserPele.jpg", "iconeTratamentoLaserPele.png"),
-  new Categoria(Servicos[3], "Tratamento com Produtos para Pele","tratamentoProdutosPele.png","iconeTratamentoProdutosPele.png"),
-  new Categoria(Servicos[2], "Designer de Sobrancelhas", "designer.png", "iconedesigner.png"),
+  new Categoria(Servicos[2], "Micropigmentação Sobrancelhas", "micropigmentacaoSobrancelhas.png"),
+  new Categoria(Servicos[3], "Tratamento a Laser para Pele", "tratamentoLaserPele.jpg"),
+  new Categoria(Servicos[3], "Tratamento com Produtos para Pele","tratamentoProdutosPele.png"),
+  new Categoria(Servicos[2], "Designer de Sobrancelhas", "designer.png"),
 ];
   
 // Criando os produtos
@@ -174,6 +168,7 @@ const Categorias = [
       new Produto(Servicos[3], Categorias[5], "Black Peel", "Revitaliza e hidrata", "40 Minutos", 200.00, "Michele Sales", "blackpeel.png"),
       new Produto(Servicos[3], Categorias[5], "Clareamento da Pele", "Remove manchas e revitaliza", "40 Minutos", 150.00, "Michele Sales", "clareamentoPeleLaser.png"),
       new Produto(Servicos[3], Categorias[5], "Rejuvenescimento da Pele", "Remove manchas e revitaliza", "40 Minutos", 150.00, "Michele Sales", "rejuvenescimentoLaser.png"),
+      new Produto(Servicos[2], Categorias[4], "Micropigmentação Labial", "Micro labial", "90 Minutos", 350.00, "Michele Sales", "microlabial.png"),
 
       new Produto(Servicos[3], Categorias[5], "Clareamento das Axilas", "Clareia e revitaliza", "30 Minutos", 60.00, "Michele Sales", "clareamentoAxilasLaser.png"),
       new Produto(Servicos[3], Categorias[5], "Clareamento da Virilha", "Clareia e revitaliza", "30 Minutos", 80.00, "Michele Sales", "clareamentoVirilhaLaser.png"),
@@ -181,7 +176,7 @@ const Categorias = [
       new Produto(Servicos[3], Categorias[5], "Tratamento de Micose", "Tratamento da pele a Laser", "30 Minutos", 99.00, "Michele Sales", "tratamentoMicose.png"),   
       new Produto(Servicos[3], Categorias[5], "Limpeza de Pele Profunda", "Limpesa a Laser", "90 Minutos", 150.00, "Michele Sales", "limpezaPeleLaser.png"),
       new Produto(Servicos[3], Categorias[5], "Peeling Hexil Dermo Clareamento", "Limpesa de pele com produto", "60 Minutos", 150.00, "Michele Sales", "peelingHexil.png"),
-      new Produto(Servicos[3], Categorias[5], "Plástica dos Pés", "Spa dos Pés", "30 Minutos", 60.00, "Michele Sales", "peelingHexil.png"),
+      new Produto(Servicos[3], Categorias[5], "Plástica dos Pés", "Spa dos Pés", "30 Minutos", 60.00, "Michele Sales", "plasticaDosPes.png"),
 
       new Produto(Servicos[3], Categorias[6], "Peeling de Diamante", "Melhora a textura da pele", "60 Minutos", 250.00, "Michele Sales", "peelingDiamante.png"),
       new Produto(Servicos[3], Categorias[6], "Limpeza de Pele Profunda", "Revitaliza e hidrata", "90 Minutos", 150.00, "Michele Sales", "limpezaPele.png"),
@@ -398,15 +393,11 @@ const Categorias = [
       });              
       
         function atualizarServicoSelecionado(servico) {
-          const imagemServico = document.getElementById('icone-servico');
           const servicoAtual = document.getElementById('servico-atual');
           const servicoSelecionado = document.getElementById('servico-selecionado'); // Seleciona o span para exibição do serviço
       
-           // Remove a classe 'oculto' para mostrar o ícone
-           imagemServico.classList.remove('oculto');
           
-          imagemServico.src = `img/${servico.icone}`; // Atualiza o icone
-          imagemServico.alt = `Imagem do serviço ${servico.nome}`;
+      
           servicoAtual.textContent = servico.nome; // Atualiza o texto
           if (servicoAtual) {
               servicoAtual.textContent = servico.nome; // Atualiza o texto em um elemento específico
@@ -418,15 +409,10 @@ const Categorias = [
       }
       
       function atualizarCategoriaSelecionada(categoria) {
-          const imagemCategoria = document.getElementById('icone-categoria');
           const categoriaAtual = document.getElementById('categoria-atual');
       
       
-           // Remove a classe 'oculto' para mostrar o ícone
-           imagemCategoria.classList.remove('oculto');   
-      
-          imagemCategoria.src = `img/${categoria.icone}`; // Atualiza o icone
-          imagemCategoria.alt = `Imagem da categoria ${categoria.nome}`;
+   
           categoriaAtual.textContent = categoria.nome; // Atualiza o texto
       }
       
@@ -469,9 +455,7 @@ const Categorias = [
       
   function limparFiltros() {
       // Redefine os textos e ícones de Serviço e Categoria
-      document.getElementById('icone-servico').classList.add('oculto');
       document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
-      document.getElementById('icone-categoria').classList.add('oculto');
       document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
       document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
   
@@ -588,3 +572,32 @@ const Categorias = [
           });
         }
       });
+
+      function atualizarConteudo(selecionado) {
+        document.getElementById('conteudo-selecionado').textContent = "=> " + selecionado;
+    
+        // Seleciona a navbar
+        const myCollapse = document.getElementById('navbarNav');
+    
+        if (myCollapse) {
+            // Inicializa o colapso
+            const bsCollapse = new bootstrap.Collapse(myCollapse, {
+                toggle: false,
+            });
+    
+            // Esconde a navbar (colapsa)
+            bsCollapse.hide();
+        } else {
+            console.error("Elemento navbarNav não encontrado.");
+        }
+    }
+    
+    // Garante que o botão "Exibir Serviços" chama a função correta
+    document.addEventListener('DOMContentLoaded', () => {
+        const botaoServicos = document.getElementById('exibir-servicos');
+        if (botaoServicos) {
+            botaoServicos.addEventListener('click', () => atualizarConteudo('SERVIÇOS'));
+        } else {
+            console.error("Botão Exibir Serviços não encontrado.");
+        }
+    });
