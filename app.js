@@ -257,7 +257,7 @@ const Categorias = [
                   containerCategorias.appendChild(cardCategoria);
            
           
-              // Atualiza o ícone e a categoria atual no cabeçalho
+              // Atualiza a categoria atual no cabeçalho
               cardCategoria.addEventListener('click', () => {
                   atualizarCategoriaSelecionada(categoria);
               });
@@ -306,77 +306,87 @@ const Categorias = [
           }
           
   let cardDetalhesAtivo = null; // Variável global para armazenar o card ativo
-  // Função para mostrar o card de detalhes
-          function mostrarDetalhes(produtoId) {
-              if (cardDetalhesAtivo) {
-                  cardDetalhesAtivo.remove();
-                }
-  
-          const cardDetalhes = document.createElement('div');
-          cardDetalhes.classList.add('card-detalhes', 'ativo');   
-                    
-              const containerProdutos = document.getElementById('produtos-container');
-              if (!containerProdutos) {
-                  console.error("Erro: containerProdutos não encontrado.");
-                  return;
-              }
-          
-          
-              const produto = produtos.find(p => p.id === produtoId);
-              if (!produto) {
-                  alert("Produto não encontrado.");
-                  return;
-              }
-          
-   
-  cardDetalhes.innerHTML = `
-    <div class="grid-detalhes">
-        <button class="fechar-card">&times;</button>
-        <div class="grid-detalhe-1">
-            <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
-            <div class="conteudo-detalhes">
-                <h3>${produto.titulo}</h3>
-                <p>${produto.subtitulo || '-'}</p>
+  function mostrarDetalhes(produtoId) {
+    // Localiza os containers
+    const containerProdutoFinal = document.getElementById('produto');
+    const containerProdutos = document.getElementById('produtos-container');
+
+    if (!containerProdutoFinal || !containerProdutos) {
+        console.error("Erro: containerProdutoFinal ou containerProdutos não encontrados.");
+        return;
+    }
+
+    // Oculta o container de produtos
+    containerProdutos.style.display = 'none';
+
+    // Limpa o cardDetalhes ativo (se existir)
+    if (cardDetalhesAtivo) {
+        cardDetalhesAtivo.remove();
+    }
+
+    // Cria o novo card de detalhes
+    const cardDetalhes = document.createElement('div');
+    cardDetalhes.classList.add('card-detalhes', 'ativo');
+
+    // Localiza o produto pelo ID
+    const produto = produtos.find(p => p.id === produtoId);
+    if (!produto) {
+        alert("Produto não encontrado.");
+        return;
+    }
+
+    // Define o conteúdo do card de detalhes
+    cardDetalhes.innerHTML = `
+        <div class="grid-detalhes">
+            <button class="fechar-card">&times;</button>
+            <div class="grid-detalhe-1">
+                <img src="img/servicos/${produto.imagem}" alt="${produto.titulo}" class="imagem-produto" />
+                <div class="conteudo-detalhes">
+                    <h3>${produto.titulo}</h3>
+                    <p>${produto.subtitulo || '-'}</p>
+                    <p><strong>Duração:</strong> ${produto.duracao}</p>
+                    <p><strong>Profissional:</strong> ${produto.profissional}</p>
+                    <p><strong>Preço:</strong> R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                    <button class="whatsapp-button">
+                        <i class="fa-brands fa-whatsapp"></i> Agendar via WhatsApp
+                    </button>
+                </div>
+            </div>
+            <div class="grid-detalhe-2">
+                <p><strong>Serviço:</strong> ${produto.servico.nome}</p>
                 <p><strong>Categoria:</strong> ${produto.categoria.nome}</p>
-                <p><strong>Duração:</strong> ${produto.duracao}</p>
-                <p><strong>Profissional:</strong> ${produto.profissional}</p>
-                <p><strong>Preço:</strong> R$ ${produto.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
-                <button class="whatsapp-button">
-                    <i class="fa-brands fa-whatsapp"></i> Agendar via WhatsApp
-                </button>
+                <p><strong>Indicação:</strong> ${produto.servico.indicacao}</p>
+                <p><strong>Contraindicações:</strong> ${produto.servico.contraindicacoes}</p>
+                <p><strong>Observações:</strong> ${produto.servico.observacoes}</p>
             </div>
         </div>
-        <div class="grid-detalhe-2">
-            <p><strong>Serviço:</strong> ${produto.servico.nome}</p>
-            <p><strong>Indicação:</strong> ${produto.servico.indicacao}</p>
-            <p><strong>Contraindicações:</strong> ${produto.servico.contraindicacoes}</p>
-            <p><strong>Observações:</strong> ${produto.servico.observacoes}</p>
-        </div>
-    </div>
-  `;
-   
-              const botaoWhatsApp = cardDetalhes.querySelector('.whatsapp-button');
-              botaoWhatsApp.addEventListener('click', () => {
-                const numeroWhatsApp = produto.whatsapp || '5535988740679'; // Número padrão
-                const mensagem = `Olá, tenho interesse na ${produto.servico.nome} e gostaria de saber mais sobre o protocolo ${produto.categoria.nome} "${produto.titulo}".`;
-                window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`);
-              });    
-  
-              const botaoFechar = cardDetalhes.querySelector('.fechar-card');
-              if (botaoFechar) {
-                  botaoFechar.addEventListener('click', () => {
-                      cardDetalhes.remove();
-                  });
-              } else {
-                  console.error("Erro: botão de fechar não encontrado.");
-              }
-   
-              document.body.appendChild(cardDetalhes);
-              cardDetalhesAtivo = cardDetalhes;
-              cardDetalhes.style.zIndex = 100;           
-          
-              containerProdutos.appendChild(cardDetalhes);
-          }
+    `;
+
+    // Adiciona funcionalidade ao botão de WhatsApp
+    const botaoWhatsApp = cardDetalhes.querySelector('.whatsapp-button');
+    botaoWhatsApp.addEventListener('click', () => {
+        const numeroWhatsApp = produto.whatsapp || '5535988740679';
+        const mensagem = `Olá, tenho interesse na ${produto.servico.nome} e gostaria de saber mais sobre o protocolo ${produto.categoria.nome} "${produto.titulo}".`;
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`);
+    });
+
+    // Adiciona funcionalidade ao botão de fechar
+    const botaoFechar = cardDetalhes.querySelector('.fechar-card');
+    botaoFechar.addEventListener('click', () => {
+        cardDetalhes.remove();
+        cardDetalhesAtivo = null;
+
+        // Exibe novamente o container de produtos
+        containerProdutos.style.display = 'grid';
+    });
+
+    // Exibe o card de detalhes no container final
+    containerProdutoFinal.innerHTML = ''; // Limpa qualquer conteúdo existente
+    containerProdutoFinal.appendChild(cardDetalhes);
+
+    // Atualiza a referência do card ativo
+    cardDetalhesAtivo = cardDetalhes;
+}
           
         
         // Inicializa a exibição dos serviços ao carregar a página
@@ -407,15 +417,26 @@ const Categorias = [
               servicoSelecionado.textContent = servico.nome; // Atualiza o texto no span
           }
       }
-      
+ 
       function atualizarCategoriaSelecionada(categoria) {
-          const categoriaAtual = document.getElementById('categoria-atual');
-      
-      
-   
-          categoriaAtual.textContent = categoria.nome; // Atualiza o texto
-      }
-      
+        // Obtém os elementos pelo ID
+        const categoriaAtual = document.getElementById('categoria-atual');
+        const categoriaSelecionada = document.getElementById('categoria-selecionada');
+    
+        // Atualiza o texto em ambos os elementos, se existirem
+        if (categoriaAtual) {
+            categoriaAtual.textContent = categoria.nome; // Atualiza o texto no elemento com ID 'categoria-atual'
+        } else {
+            console.error("Elemento com ID 'categoria-atual' não encontrado.");
+        }
+    
+        if (categoriaSelecionada) {
+            categoriaSelecionada.textContent = categoria.nome; // Atualiza o texto no elemento com ID 'categoria-selecionada'
+        } else {
+            console.error("Elemento com ID 'categoria-selecionada' não encontrado.");
+        }
+    }
+           
       
       function obterProdutosFiltrados() {
           const containerProdutos = document.getElementById('produtos-container');
@@ -458,7 +479,8 @@ const Categorias = [
       document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
       document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
       document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
-  
+      document.getElementById('categoria-selecionada').textContent = 'Selecione uma Categoria';
+
       
       // Opcional: Redefine os filtros de produtos
     
@@ -601,3 +623,4 @@ const Categorias = [
             console.error("Botão Exibir Serviços não encontrado.");
         }
     });
+    
