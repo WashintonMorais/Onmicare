@@ -95,6 +95,8 @@ header {
 .title {
   text-align: center; /* Centraliza os textos h1 e h2 */
   margin-right: 100px;
+  cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+  transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
 }
 .title h1 {
   font-family: "Poppins", sans-serif;
@@ -122,6 +124,8 @@ header {
   width: 80px; /* Ajuste o tamanho da logo conforme necessário */
   height: auto;
   margin-right: 10px; /* Espaço à direita da logo */
+  cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+  transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
 }
 
 .search-container {
@@ -179,10 +183,14 @@ header {
   /* Oculta os títulos h1 e h2 em telas menores */
   .title {
     display: none;
+    cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+    transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
   }
 
   /* Ajuste do tamanho da logo para centralizar em telas menores */
   .logo img {
+    cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+    transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
     width: 80px; /* Diminui o tamanho da logo para telas menores */
   }
 }
@@ -244,6 +252,8 @@ button {
 
 /* Título da navbar à esquerda */
 .title-2 {
+  cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+  transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
   text-align: center; /* Centraliza os textos h1 e h2 */
   margin-right: 30px;
   height: auto;
@@ -289,6 +299,8 @@ button {
 
   /* Título fica centralizado na versão responsiva */
   .title-2 {
+    cursor: pointer; /* Mostra o cursor de "mão" para indicar que é clicável */
+    transition: transform 0.2s, opacity 0.2s; /* Efeito suave ao passar o mouse */
     align-items: center; /* Centraliza o título na tela */
     margin-right: 0; /* Remove a margem direita */
   }

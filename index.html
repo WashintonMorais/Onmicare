@@ -47,14 +47,14 @@
 
 <!-- HEADER PRINCIPAL -->
 <section>
-    <div class="header-content">
-        <div class="logo">
-            <img src="img/Logoonmicare.png" alt="Logo da OnMicare">
-        </div>
-        <div class="title">
-            <h1>Michele Sales</h1>
-            <h2>Estetica Avançada</h2>
-        </div>
+  <div class="header-content">
+    <div class="logo" onclick="irParaPaginaInicial()">
+        <img src="img/Logoonmicare.png" alt="Logo da OnMicare">
+    </div>
+    <div class="title" onclick="irParaPaginaInicial()">
+        <h1>Michele Sales</h1>
+        <h2>Estética Avançada</h2>
+    </div>
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass search-icon" style="color: #484848;"></i>
             <input type="text" id="busca" placeholder="Pesquisar tratamento" oninput="buscarTratamento()">
@@ -66,7 +66,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <!-- Logo ou nome do site, fixado à esquerda -->
-        <div class="title-2">
+        <div class="title-2" onclick="irParaPaginaInicial()">
           <h1>ONMICARE</h1>
           <h2>VOCÊ AOS MEUS CUIDADOS</h2>
         </div>
@@ -111,18 +111,24 @@
         </div>
       </div>
     </nav>
-  </section>  
+  </section>   
 
-<span id="servico-selecionado" class="nav-link">Selecione um Serviço</span> 
-<div id="formulario-container"></div>
-<!-- ÁREA DINÂMICA -->
-<div class="container">
+  <div id="formulario-container"></div>
+  <!-- ÁREA DINÂMICA -->
+  <div class="container">
+    <div class="linha-selecao">
+        <!-- Seleção do Serviço -->
+        <span id="servico-selecionado" class="nav-link">Selecione um Serviço</span> 
+        <!-- Separador visual ou funcional, se necessário -->
+        <span> > </span>
+        <!-- Seleção da Categoria -->
+        <span id="categoria-selecionada" class="nav-link">Selecione uma Categoria</span>
+    </div>
     <!-- Lista de serviços -->
     <div id="servicos-container" class="opcoes-servicos"></div>
     <!-- Lista de categorias -->
     <div id="categorias-container" class="opcoes-categorias"></div>
-    
-</div>
+  </div>
 
 <!-- OUTRAS SEÇÕES -->
 <section>

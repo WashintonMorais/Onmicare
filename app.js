@@ -380,6 +380,7 @@ const Categorias = [
         containerProdutos.style.display = 'grid';
     });
 
+
     // Exibe o card de detalhes no container final
     containerProdutoFinal.innerHTML = ''; // Limpa qualquer conteúdo existente
     containerProdutoFinal.appendChild(cardDetalhes);
@@ -474,30 +475,37 @@ const Categorias = [
           });
       }
       
-  function limparFiltros() {
-      // Redefine os textos e ícones de Serviço e Categoria
-      document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
-      document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
-      document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
-      document.getElementById('categoria-selecionada').textContent = 'Selecione uma Categoria';
-
-      
-      // Opcional: Redefine os filtros de produtos
+      function limparFiltros() {
+        // Redefine os textos de Serviço e Categoria
+        document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
+        document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
+        document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Seleciona o span para exibição do serviço
+        document.getElementById('categoria-selecionada').textContent = 'Selecione uma Categoria';
     
-      const containerServicos = document.getElementById('servicos-container');
-      containerServicos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
-  
-      const containerCategorias = document.getElementById('categorias-container');
-      containerCategorias.innerHTML = ''; // Limpa o container (ajuste conforme necessário)
-  
-      const containerProdutos = document.getElementById('produtos-container');
-      containerProdutos.innerHTML = ''; // Limpa o container (ajuste conforme necessário)  
-  
-  
-      // Reseta a ordenação
-      console.log('Filtros limpos!'); // Para fins de depuração
-  }
-  
+        // Limpa os containers de serviços, categorias e produtos
+        const containerServicos = document.getElementById('servicos-container');
+        containerServicos.innerHTML = ''; 
+    
+        const containerCategorias = document.getElementById('categorias-container');
+        containerCategorias.innerHTML = '';
+    
+        const containerProdutos = document.getElementById('produtos-container');
+        containerProdutos.innerHTML = '';
+        containerProdutos.style.display = 'none'; // Oculta o container de produtos
+    
+        // Limpa o card de detalhes
+        const containerProdutoFinal = document.getElementById('produto');
+        if (containerProdutoFinal) {
+            containerProdutoFinal.innerHTML = ''; // Remove qualquer card de detalhes ativo
+        }
+    
+        // Reexibe o container de serviços como padrão
+        exibirServicos();
+    
+        console.log('Filtros limpos!'); // Para fins de depuração
+    }
+   
+      
   
   function ordenarProdutos(criterio) {
       const produtosFiltrados = obterProdutosFiltrados();
@@ -623,4 +631,34 @@ const Categorias = [
             console.error("Botão Exibir Serviços não encontrado.");
         }
     });
+
+    function irParaPaginaInicial() {
+        // Redefine os textos de Serviço e Categoria
+        document.getElementById('servico-atual').textContent = 'Selecione um Serviço';
+        document.getElementById('categoria-atual').textContent = 'Selecione uma Categoria';
+        document.getElementById('servico-selecionado').textContent = 'Selecione um Serviço'; // Span do serviço selecionado
+        document.getElementById('categoria-selecionada').textContent = 'Selecione uma Categoria';
+    
+        // Limpa todos os containers
+        const containerServicos = document.getElementById('servicos-container');
+        const containerCategorias = document.getElementById('categorias-container');
+        const containerProdutos = document.getElementById('produtos-container');
+        const containerProdutoFinal = document.getElementById('produto');
+    
+        containerServicos.innerHTML = ''; // Limpa serviços
+        containerCategorias.innerHTML = ''; // Limpa categorias
+        containerProdutos.innerHTML = ''; // Limpa produtos
+        containerProdutoFinal.innerHTML = ''; // Limpa card de detalhes
+    
+        // Define a visibilidade inicial
+        containerServicos.style.display = 'grid'; // Exibe serviços
+        containerCategorias.style.display = 'none'; // Oculta categorias
+        containerProdutos.style.display = 'none'; // Oculta produtos
+    
+        // Reexibe os serviços
+        exibirServicos();
+    
+        console.log('Página inicial exibida!'); // Log de depuração
+    }
+    
     
