@@ -194,11 +194,15 @@ const Categorias = [
         const containerServicos = document.getElementById('servicos-container');
         const containerCategorias = document.getElementById('categorias-container');
         const containerProdutos = document.getElementById('produtos-container');
-        
+        const containerProdutoFinal = document.getElementById('produto');
+
         // Limpa todos os containers
         containerServicos.innerHTML = '';
         containerCategorias.innerHTML = '';
         containerProdutos.innerHTML = '';
+        containerProdutoFinal.innerHTML = ''; // Limpa card de detalhes
+
+        
         containerProdutos.style.display = 'none'; // Oculta os produtos
         
         Servicos.forEach((servico) => {
@@ -387,6 +391,7 @@ const Categorias = [
 
     // Atualiza a referência do card ativo
     cardDetalhesAtivo = cardDetalhes;
+    
 }
           
         
@@ -499,6 +504,8 @@ const Categorias = [
             containerProdutoFinal.innerHTML = ''; // Remove qualquer card de detalhes ativo
         }
     
+
+
         // Reexibe o container de serviços como padrão
         exibirServicos();
     
@@ -603,24 +610,29 @@ const Categorias = [
         }
       });
 
-      function atualizarConteudo(selecionado) {
+ 
+ 
+    function atualizarConteudo(selecionado) {
+        // Atualiza o texto do conteúdo selecionado
         document.getElementById('conteudo-selecionado').textContent = "=> " + selecionado;
     
-        // Seleciona a navbar
-        const myCollapse = document.getElementById('navbarNav');
+        if (selecionado === 'AGENDAR') {
+            // Exibe o formulário de agendamento no contêiner separado
+            criarFormularioAgendamento(produtos, 'formulario-container');
+        }
     
+        // Fecha a navbar se estiver visível
+        const myCollapse = document.getElementById('navbarNav');
         if (myCollapse) {
-            // Inicializa o colapso
             const bsCollapse = new bootstrap.Collapse(myCollapse, {
                 toggle: false,
             });
-    
-            // Esconde a navbar (colapsa)
             bsCollapse.hide();
         } else {
             console.error("Elemento navbarNav não encontrado.");
         }
-    }
+    }   
+    
     
     // Garante que o botão "Exibir Serviços" chama a função correta
     document.addEventListener('DOMContentLoaded', () => {

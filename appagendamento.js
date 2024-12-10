@@ -71,7 +71,7 @@ function formatarCelular(numero) {
       </div>
       <input type="text" id="data" name="data" placeholder="Selecione a data" required>
       <input type="time" id="hora" name="hora" placeholder="Selecione a hora" required>
-      <input type="hidden" id="produto" name="produto"> <!-- Campo oculto para armazenar o produto selecionado -->
+      <input type="hidden" id="produto-agenda" name="produto-agenda"> <!-- Campo oculto para armazenar o produto selecionado -->
       <button type="submit">Agendar</button>
     `;
     formulario.appendChild(form);
@@ -236,22 +236,48 @@ function formatarCelular(numero) {
   
     // Submissão do formulário
     form.addEventListener('submit', (event) => {
-        event.preventDefault();
+      event.preventDefault();
   
-        const nome = form.querySelector('#nome').value;
-        const email = form.querySelector('#email').value;
-        const telefone = form.querySelector('#telefone').value;
-        const servico = form.querySelector('#servico').value;
-        const categoria = form.querySelector('#categoria').value;
-        const data = form.querySelector('#data').value;
-        const hora = form.querySelector('#hora').value;
+      const nome = form.querySelector('#nome').value;
+      const email = form.querySelector('#email').value;
+      const telefone = form.querySelector('#telefone').value;
+      const servico = form.querySelector('#servico').value;
+      const categoria = form.querySelector('#categoria').value;
+      const data = form.querySelector('#data').value;
+      const hora = form.querySelector('#hora').value;
   
-        if (!nome || !email || !telefone || !servico || !categoria || !data || !hora || procedimentosSelecionados.length === 0) {
-            alert('Por favor, preencha todos os campos e selecione pelo menos um procedimento.');
-            return;
-        }
+      if (!nome || !email || !telefone || !servico || !categoria || !data || !hora || procedimentosSelecionados.length === 0) {
+          alert('Por favor, preencha todos os campos e selecione pelo menos um procedimento.');
+          return;
+      }
   
-        alert('Agendamento confirmado!');
-    });
+      alert('Agendamento confirmado!');
+      const novoAgendamento = confirm('Deseja fazer um novo agendamento? Clique em "OK" para sim ou "Cancelar" para não.');
+  
+      if (novoAgendamento) {
+          // Limpa os campos do formulário
+          form.reset();
+  
+          // Limpa os procedimentos selecionados
+          procedimentosSelecionados = [];
+          atualizarProcedimentosSelecionados();
+  
+          // Limpa os selects dinâmicos
+          const categoriaSelect = form.querySelector('#categoria');
+          const produtoLista = form.querySelector('#produto-lista');
+  
+          if (categoriaSelect) {
+              categoriaSelect.innerHTML = '<option value="">Selecione a Categoria</option>';
+          }
+  
+          if (produtoLista) {
+              produtoLista.innerHTML = '<option value="">Selecione o Procedimento</option>';
+          }
+      } else {
+          // Fecha o formulário
+          formulario.style.display = 'none';
+      }
+  });
+  
   }
   

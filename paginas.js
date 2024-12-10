@@ -124,9 +124,25 @@ function exibirTecnologia() {
     document.getElementById('departmentsSection').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Nossos Serviços
 function exibirTratamentos() {
     const contentDiv = document.getElementById('content');
+    
+    // Função para gerar o HTML para as categorias de tratamento
+    function gerarListaCategoria(categoriasFiltradas) {
+        let listaHtml = '';
+        categoriasFiltradas.forEach(categoria => {
+            listaHtml += `
+                <li>${categoria.nome}</li>
+            `;
+        });
+        return listaHtml;
+    }
+
+    // Filtra as categorias para Tratamentos Femininos (excluindo "Depilação Masculina")
+    const categoriasFemininas = Categorias.filter(categoria => categoria.nome !== "Depilação Masculina");
+    // Filtra as categorias para Tratamentos Masculinos (excluindo "Depilação Feminina")
+    const categoriasMasculinas = Categorias.filter(categoria => categoria.nome !== "Depilação Feminina");
+
     contentDiv.innerHTML = `
         <div class="section" id="servicesSection">
             <div class="container">
@@ -145,9 +161,7 @@ function exibirTratamentos() {
                     <div class="col-lg-8 col-xl-8">
                         <h5 class="service-card-name">Tratamentos Femininos</h5>
                         <ul class="marker-list-md">
-                            <li>Face Feminina</li>
-                            <li>Buço</li>
-                            <li>Orelhas</li>
+                            ${gerarListaCategoria(categoriasFemininas)}
                         </ul>
                     </div>
                 </div>
@@ -157,9 +171,7 @@ function exibirTratamentos() {
                     <div class="col-lg-8 col-xl-8 order-1 order-lg-0">
                         <h5 class="service-card-name">Tratamentos Masculinos</h5>
                         <ul class="marker-list-md">
-                            <li>Buço</li>
-                            <li>Orelhas</li>
-                            <li>Barba Masculina</li>
+                            ${gerarListaCategoria(categoriasMasculinas)}
                         </ul>
                     </div>
                     <div class="col-md-4 order-0 order-lg-1 mt-4 mt-md-0">
@@ -171,7 +183,6 @@ function exibirTratamentos() {
             </div>
         </div>
     `;
-    
     // Rolar para a seção do conteúdo
     document.getElementById('servicesSection').scrollIntoView({ behavior: 'smooth' });
 }
@@ -180,5 +191,3 @@ function exibirTratamentos() {
 document.getElementById('quemSomosButton').addEventListener('click', exibirQuemSomos);
 document.getElementById('nossaTecnologiaButton').addEventListener('click', exibirTecnologia);
 document.getElementById('nossosServicosButton').addEventListener('click', exibirTratamentos);
-
-  
