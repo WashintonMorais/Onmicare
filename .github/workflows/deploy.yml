@@ -3,22 +3,19 @@ name: Deploy via FTP
 on:
   push:
     branches:
-      - main # Substitua pela branch que você utiliza para deploy
+      - main
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      # Faz o checkout do repositório
       - uses: actions/checkout@v2
-
-      # Publica os arquivos no servidor FTP
       - name: FTP Deploy para Locaweb
         uses: locaweb/ftp-deploy@1.0.0
         with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          password: ${{ secrets.PASS }}
-          localDir: "onmicare" # Substitua pelo diretório local do seu projeto
-          remoteDir: "/home/onmicare1/public_html" # Caminho remoto baseado no diretório raiz
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
+          # localDir: "public"  # Se os arquivos estiverem em uma pasta chamada "public"
+          remoteDir: "/home/onmicare1/"
