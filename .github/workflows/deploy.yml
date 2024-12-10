@@ -20,5 +20,5 @@ jobs:
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
-          localDir: "dist" # Substitua pelo diretório local do seu projeto
+          localDir: "onmicare" # Substitua pelo diretório local do seu projeto
           remoteDir: "/home/onmicare1/public_html" # Caminho remoto baseado no diretório raiz
