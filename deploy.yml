@@ -1,16 +1,21 @@
-name: Deploy via ftp
-on: push
+name: Deploy via FTP
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-
-    - name: FTP Deploy Locaweb
-      uses: locaweb/ftp-deploy@1.0.0
-      with:
-        host: ${{ secrets.HOST }} 
-        user: ${{ secrets.USER }}
-        password: ${{ secrets.PASS }}
-        localDir: "dist"
+      - uses: actions/checkout@v2
+      - name: FTP Deploy para Locaweb
+        uses: locaweb/ftp-deploy@1.0.0
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
+          # localDir: "public"  # Se os arquivos estiverem em uma pasta chamada "public"
+          remoteDir: "/home/onmicare1/"
