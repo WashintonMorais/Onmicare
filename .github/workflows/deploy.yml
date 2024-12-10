@@ -19,4 +19,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
           remoteDir: "/home/onmicare1/public_html"  # Caminho correto no servidor FTP
-          debug: true  # Habilitar debug para mais detalhes
+          forceSsl: true  # Habilitar SSL, se necessário
+          debug: true  # Habilitar modo debug para mais informações
