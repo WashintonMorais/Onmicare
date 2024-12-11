@@ -370,7 +370,7 @@ const Categorias = [
     const botaoWhatsApp = cardDetalhes.querySelector('.whatsapp-button');
     botaoWhatsApp.addEventListener('click', () => {
         const numeroWhatsApp = produto.whatsapp || '5535988740679';
-        const mensagem = `Olá, tenho interesse na ${produto.servico.nome} e gostaria de saber mais sobre o protocolo ${produto.categoria.nome} "${produto.titulo}".`;
+        const mensagem = `Olá, tenho interesse em ${produto.servico.nome} e gostaria de saber mais sobre o protocolo ${produto.categoria.nome} "${produto.titulo}".`;
         window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`);
     });
 
