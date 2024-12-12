@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: FTP Deploy para Locaweb
-        uses: ./ftp-deploy
+        uses: ../ftp-deploy
         with:
           host: ${{ secrets.FTP_HOST }}
           user: ${{ secrets.FTP_USER }}
