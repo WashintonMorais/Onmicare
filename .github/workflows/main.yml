@@ -10,11 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Deploy via FTP
-        uses: locaweb/ftp-deploy@1.0.0  # Use a ação de FTP diretamente
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./dist  # Ajuste o caminho para o diretório de saída do build
+          artifact-name: deno-app
+      - name: Deploy artifact to FTP
+        uses: ./.github/workflows/ftp-deploy.yml
         with:
           host: ${{ secrets.FTP_HOST }}
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: './Onmicare'  # Certifique-se de que esse caminho está correto
-          remoteDir: '/home/onmicare1/'
-          options: '-r'
+          local-dir: ./dist  # Ajuste o caminho para o diretório de saída do build
+          remote-dir: /home/onmicare1/

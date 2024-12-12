@@ -1,33 +1,18 @@
-name: Deploy to FTP
+name: Deploy Deno Application
 
 on:
   push:
-    branches: [ main ]  # You can adjust this to trigger on specific branches
+    branches: [ main ]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest  # You can choose a different runner if needed
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  # Download your code from the repository
-      - name: Build your site (if necessary)  # Replace with your build command (e.g., npm run build)
-        run: npm run build
-
-      - name: Upload artifact  # Create a temporary artifact for deployment files
+      - uses: actions/checkout@v3
+      - name: Build Deno Application
+        run: deno run --allow-net --allow-read --allow-write main.ts
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          path: ./build  # Replace with the directory containing your built files
-          name: deploy-artifact
-
-      - name: Deploy to FTP  # Use a custom action or script for secure FTP transfer
-        uses: ./deploy-to-ftp.sh@v1  # Replace with the path to your custom script
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          REMOTE_PATH: /home/onmicare1/  # Replace with your remote directory
-        with:
-          artifact_name: deploy-artifact  # Name of the uploaded artifact
-
-      - name: Cleanup (optional)  # Remove temporary files if desired
-        run: rm -rf ./build
+          name: deno-app
+          path: ./dist  # Ajuste o caminho para o diretório de saída do build
