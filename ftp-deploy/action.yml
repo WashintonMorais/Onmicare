@@ -1,6 +1,6 @@
 name: 'FTP Deploy Locaweb'
 author: 'Locaweb'
-description: 'Automatize o envio de arquivos de FTP do seu site para o seu site Locaweb!'
+description: 'Automatize o envio de arquivos via FTP para o seu site Locaweb!'
 inputs:
   host:
     description: 'FTP host'
@@ -16,15 +16,15 @@ inputs:
     required: false
     default: 'false'
   localDir:
-    description: 'Local directory'
+    description: 'Local directory to upload from'
     required: false
     default: '.'
   remoteDir:
-    description: 'Remote directory'
+    description: 'Remote directory to upload to'
     required: false
-    default: 'public_html'
+    default: '/public_html'
   options:
-    description: 'Additional mirror command options'
+    description: 'Additional lftp mirror command options'
     required: false
     default: ''
 runs:
