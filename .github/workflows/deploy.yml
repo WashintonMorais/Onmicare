@@ -9,14 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: FTP Deploy para Locaweb
         uses: ./ftp-deploy
         with:
-          host: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
-          remoteDir: "/public_html"  # Caminho correto no servidor FTP
-          forceSsl: true  # Habilitar SSL, se necessário
+          INPUT_HOST: ${{ secrets.FTP_HOST }}
+          INPUT_USER: ${{ secrets.FTP_USER }}
+          INPUT_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          INPUT_LOCALDIR: "."  # Se todos os arquivos estiverem na raiz do repositório
+          INPUT_REMOTEDIR: "/public_html"  # Caminho correto no servidor FTP
+          INPUT_FORCESSL: "true"  # Habilitar SSL, se necessário
