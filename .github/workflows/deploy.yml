@@ -18,5 +18,5 @@ jobs:
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
-          remoteDir: "/home/onmicare1/public_html"  # Caminho correto no servidor FTP
+          remoteDir: "/public_html"  # Caminho correto no servidor FTP
           forceSsl: true  # Habilitar SSL, se necessário
