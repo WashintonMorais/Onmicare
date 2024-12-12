@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3  # Download your code from the repository
       - name: Build your site (if necessary)  # Replace with your build command (e.g., npm run build)
-        run: <your_build_command>
+        run: npm run build
 
       - name: Upload artifact  # Create a temporary artifact for deployment files
         uses: actions/upload-artifact@v3
