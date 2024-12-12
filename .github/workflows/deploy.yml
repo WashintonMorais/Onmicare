@@ -15,9 +15,9 @@ jobs:
       - name: FTP Deploy para Locaweb
         uses: ./ftp-deploy
         with:
-          INPUT_HOST: ${{ secrets.FTP_HOST }}
-          INPUT_USER: ${{ secrets.FTP_USER }}
-          INPUT_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          INPUT_LOCALDIR: "."  # Se todos os arquivos estiverem na raiz do repositório
-          INPUT_REMOTEDIR: "/public_html"  # Caminho correto no servidor FTP
-          INPUT_FORCESSL: "true"  # Habilitar SSL, se necessário
+          host: ftp://webftp.locaweb.com.br
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: ./
+          remoteDir: /files/public_html
+          forceSsl: true
