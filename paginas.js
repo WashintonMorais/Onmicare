@@ -62,7 +62,6 @@ function exibirTecnologia() {
                             <strong>Diferenciais e Benefícios:</strong>
                             <ul>
                                 <li>4 LASERS em 01: Rubi (694nm), Alexandrite (755nm), Diodo (808nm) e ND-YAG (1064nm)</li>
-                                <li>40 MILHÕES de disparos</li>
                                 <li>Sistema indolor com resfriamento da ponteira que atinge até -12º em 50 segundos</li>
                                 <li>Projetado para alta demanda de atendimentos</li>
                                 <li>Laser de epilação mais silencioso do mercado</li>
@@ -92,13 +91,9 @@ function exibirTecnologia() {
                         <p class="max-1000" align="justify">
                             <strong>Diferenciais e Benefícios:</strong>
                             <ul>
-                                <li>Carrinho de brinde na compra do Ômer Smart com a BCMED</li>
-                                <li>4 milhões de disparos</li>
                                 <li>3 ponteiras com distintas indicações</li>
                                 <li>Resultados rápidos em poucas sessões</li>
                                 <li>Disparos em nanossegundos</li>
-                                <li>Leve, com apenas 27 quilos</li>
-                                <li>Fácil transporte e portátil</li>
                                 <li>Especialmente desenvolvido para remoção de pigmentos (tattoos) e micropigmentação</li>
                             </ul>
                         </p>
