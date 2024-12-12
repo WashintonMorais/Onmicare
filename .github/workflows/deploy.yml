@@ -20,4 +20,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: ./
           remoteDir: /files/public_html
-          forceSsl: true
