@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-COPY LICENSE README.md /
+COPY LICENSE /
 
 RUN apk --no-cache add lftp
 
