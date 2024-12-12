@@ -1,0 +1,20 @@
+name: Deploy to Locaweb via FTP
+
+on:
+  push:
+    branches: [ main ]  # Substitua 'main' pelo nome do seu branch principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy via FTP
+        uses: ./.github/workflows/ftp-deploy.yml
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: './Onmicare'  # Ajuste este caminho se necessário
+          remoteDir: '/home/onmicare1/'
+          options: '-r'

@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: FTP Deploy para Locaweb
         uses: locaweb/ftp-deploy@1.0.0
         with:
@@ -17,5 +18,6 @@ jobs:
           user: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "."  # Se todos os arquivos estiverem na raiz do repositório
-          # localDir: "public"  # Se os arquivos estiverem em uma pasta chamada "public"
-          remoteDir: "/home/onmicare1/"
+          remoteDir: "/home/onmicare1/public_html"  # Caminho correto no servidor FTP
+          forceSsl: true  # Habilitar SSL, se necessário
+          debug: true  # Habilitar modo debug para mais informações
